@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Figtree } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Naufal Altaf",
 };
+
+const figtree = Figtree({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -12,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-background text-text">
+      <body className={`${figtree.className} bg-background text-text`}>
         {children}
       </body>
     </html>
