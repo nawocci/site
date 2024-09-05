@@ -4,6 +4,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "next-sanity";
 import { notFound } from "next/navigation";
+import PortableTextComponents from "@/components/PortableTextComponents";
 
 export const fetchCache = 'force-no-store';
 
@@ -28,7 +29,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         className={"rounded-lg w-full h-64 sm:h-[32rem] object-cover"}
       />
       <div className="max-w-none prose prose-invert sm:hover:prose-a:text-primary">
-        <PortableText value={post.body}/>
+        <PortableText value={post.body} components={PortableTextComponents} />
       </div>
     </div>
   );

@@ -9,6 +9,21 @@ const blockContent: SchemaTypeDefinition = {
     {
       type: 'block',
     },
+    {
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessibility.',
+          validation: (Rule) => Rule.required(),
+        },
+      ],
+    },
   ],
 }
 
