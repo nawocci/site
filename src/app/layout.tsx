@@ -15,8 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.className} bg-background text-text`}>
-        {children}
+      <body className={`${figtree.className} bg-background text-text w-full flex justify-center px-4 sm:px-0`}>
+        <div className="max-w-5xl w-full">
+          {children}
+        </div>
       </body>
     </html>
   );
