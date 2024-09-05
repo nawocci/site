@@ -1,6 +1,7 @@
-import {client} from "@/sanity/lib/client";
+import { client } from "@/sanity/lib/client";
+import { Posts } from "@/types/blog";
 
-function formatDate(dateString) {
+function formatDate(dateString: string): string {
   const date = new Date(dateString);
 
   const day = String(date.getDate()).padStart(2, '0');
@@ -11,23 +12,21 @@ function formatDate(dateString) {
 }
 
 export async function fetchBlogPosts() {
-  const query = '*[_type == "blogPost"]{title, slug, mainImage, postDate}'
-
-  const posts = await client.fetch(query)
+  const query = '*[_type == "blogPost"]{title, slug, mainImage, postDate}';
+  const posts: Posts[] = await client.fetch(query);
 
   return posts.map(post => ({
     ...post,
     postDate: formatDate(post.postDate),
-  }))
+  }));
 }
 
 export async function fetchBlogPost(slug: string) {
-  const query = `*[_type == "blogPost" && slug.current == '${slug}'][0]{title, mainImage, postDate, body}`
-
-  const post = await client.fetch(query)
+  const query = `*[_type == "blogPost" && slug.current == '${slug}'][0]{title, mainImage, postDate, body}`;
+  const post = await client.fetch(query);
 
   return {
     ...post,
     postDate: formatDate(post.postDate),
-  }
+  };
 }
