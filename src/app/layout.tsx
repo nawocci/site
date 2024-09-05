@@ -17,13 +17,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.className} bg-background text-text w-full h-screen flex justify-center px-4 sm:px-0`}>
-        <div className="max-w-5xl w-full flex flex-col">
-          <Navbar />
-          <div className="flex-grow flex justify-center">
-            {children}
+      <body className={`${figtree.className} bg-background text-text`}>
+        <div className="min-h-[100dvh] flex justify-center px-4 sm:px-0">
+          <div className="w-full max-w-5xl flex flex-col">
+            <Navbar />
+            <main className="flex-grow flex justify-center items-center">
+              {children}
+            </main>
+            <Footer />
           </div>
-          <Footer />
         </div>
       </body>
     </html>
