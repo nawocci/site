@@ -3,9 +3,14 @@ import { fetchBlogPost } from "@/sanity/lib/api";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "next-sanity";
+import { notFound } from "next/navigation";
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const post: Post = await fetchBlogPost(params.slug);
+
+  if (!post) {
+    notFound();
+  }
 
   return (
     <div>
