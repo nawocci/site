@@ -13,8 +13,11 @@ export default function Navbar() {
         <h1 className="text-xl sm:text-2xl font-semibold">Naufal Altaf</h1>
       </a>
       <div className="flex items-center gap-6">
-        <a href="/blog" className={`hidden sm:inline-block text-sm sm:text-base font-semibold lg:hover:text-primary duration-200 ${pathname.startsWith('/blog') ? 'text-primary' : ''}`}>
-          Blog
+        <a href="/blog" className={`flex items-center justify-center w-10 h-10 sm:w-auto sm:h-auto px-0 sm:px-4 py-2 text-sm sm:text-base font-semibold ${pathname.startsWith('/blog') ? 'text-primary border-primary' : 'border-white'} border rounded-md lg:hover:text-primary lg:hover:border-primary duration-200`}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 sm:hidden">
+            <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+          <span className="hidden sm:inline">Blog</span>
         </a>
         <a href="mailto:me@altaf.xyz"
            className="flex items-center justify-center w-10 h-10 sm:w-auto sm:h-auto px-0 sm:px-4 py-2 text-sm sm:text-base font-semibold bg-primary rounded-md lg:hover:brightness-125 duration-200">
