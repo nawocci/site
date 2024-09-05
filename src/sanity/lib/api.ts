@@ -1,13 +1,33 @@
-import {client} from './client'
+import {client} from "@/sanity/lib/client";
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+  const year = date.getFullYear();
+
+  return `${day}-${month}-${year}`;
+}
 
 export async function fetchBlogPosts() {
   const query = '*[_type == "blogPost"]{title, slug, mainImage, postDate}'
 
-  return await client.fetch(query)
+  const posts = await client.fetch(query)
+
+  return posts.map(post => ({
+    ...post,
+    postDate: formatDate(post.postDate),
+  }))
 }
 
 export async function fetchBlogPost(slug: string) {
   const query = `*[_type == "blogPost" && slug.current == '${slug}'][0]{title, mainImage, postDate, body}`
 
-  return await client.fetch(query)
+  const post = await client.fetch(query)
+
+  return {
+    ...post,
+    postDate: formatDate(post.postDate),
+  }
 }
