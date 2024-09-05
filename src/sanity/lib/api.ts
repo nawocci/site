@@ -12,7 +12,7 @@ function formatDate(dateString: string): string {
 }
 
 export async function fetchBlogPosts() {
-  const query = '*[_type == "blogPost"]{title, slug, mainImage, postDate}';
+  const query = '*[_type == "blogPost"] | order(postDate desc){title, slug, mainImage, postDate}';
   const posts: Posts[] = await client.fetch(query);
 
   return posts.map(post => ({
