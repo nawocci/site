@@ -25,7 +25,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         alt={"Main Image"}
         height={300}
         width={600}
-        className={"rounded-lg w-full h-[38rem] object-cover"}
+        className={"rounded-lg w-full h-64 sm:h-[32rem] object-cover"}
       />
       <div className="max-w-none prose prose-invert sm:hover:prose-a:text-primary">
         <PortableText value={post.body}/>
