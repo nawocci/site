@@ -2,6 +2,8 @@ import { Posts } from "@/types/blog";
 import { fetchBlogPosts } from "@/sanity/lib/api";
 import Link from "next/link";
 
+export const fetchCache = 'force-no-store';
+
 export default async function Blog() {
   const posts:Posts[] = await fetchBlogPosts();
 

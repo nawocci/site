@@ -5,6 +5,8 @@ import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "next-sanity";
 import { notFound } from "next/navigation";
 
+export const fetchCache = 'force-no-store';
+
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const post: Post = await fetchBlogPost(params.slug);
 
