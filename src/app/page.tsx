@@ -1,7 +1,11 @@
+import Hero from "@/components/Hero";
+import SocialLinks from "@/components/SocialLinks";
+
 export default function Home() {
   return (
-      <div>
-        <h1>Hello world</h1>
-      </div>
+    <main className="h-full flex flex-col items-center justify-center space-y-8">
+      <Hero />
+      <SocialLinks />
+    </main>
   );
 }
