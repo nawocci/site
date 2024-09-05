@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={`${figtree.className} bg-background text-text w-full h-screen flex justify-center px-4 sm:px-0`}>
         <div className="max-w-5xl w-full flex flex-col">
           <Navbar />
-          <div className="flex-grow">
+          <div className="flex-grow flex justify-center">
             {children}
           </div>
           <Footer />

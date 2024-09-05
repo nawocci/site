@@ -3,7 +3,7 @@ import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
   return (
-    <main className="h-full flex flex-col items-center justify-center space-y-8">
+    <main className="h-full flex flex-col justify-center space-y-8">
       <Hero />
       <SocialLinks />
     </main>

@@ -1,6 +1,6 @@
 export default function SocialLinks() {
   return (
-    <div className="w-full flex justify-center">
+    <div className="flex justify-center">
       <div className="flex space-x-4 md:space-x-6">
           <a href="https://github.com/nawocci" target="_blank" rel="noopener noreferrer" className="lg:hover:text-primary duration-200">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
