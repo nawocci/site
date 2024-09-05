@@ -24,6 +24,12 @@ const blockContent: SchemaTypeDefinition = {
         },
       ],
     },
+    {
+      type: 'code',
+      options: {
+        withFilename: true,
+      },
+    },
   ],
 }
 
