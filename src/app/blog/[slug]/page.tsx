@@ -16,7 +16,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-2 sm:px-8">
+    <div className="w-full max-w-4xl mx-auto px-2 sm:px-8 animate-fadeIn">
       <div className="flex flex-col space-y-12">
         <div className="flex flex-col items-center space-y-2">
           <p className="text-base text-secondary font-medium">{post.postDate}</p>

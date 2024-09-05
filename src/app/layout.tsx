@@ -21,7 +21,7 @@ export default function RootLayout({
         <div className="min-h-[100dvh] flex justify-center px-4 sm:px-0">
           <div className="w-full max-w-5xl flex flex-col">
             <Navbar />
-            <main className="flex-grow flex justify-center items-center">
+            <main className="flex-grow flex justify-center items-center animate-fadeIn">
               {children}
             </main>
             <Footer />
