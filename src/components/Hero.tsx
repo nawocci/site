@@ -5,7 +5,7 @@ export default function Hero() {
         Student & Developer<br/>Based in Indonesia
       </h1>
       <p className="text-center text-sm md:text-lg text-gray-500">
-        Hi, I&apos;m Naufal, a student studying Information Systems. I have an interest in full stack and AOSP development.
+        Hi, I&apos;m Naufal Altaf, a student studying Information Systems. I have an interest in full stack and AOSP development.
       </p>
     </div>
   );
