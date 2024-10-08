@@ -29,7 +29,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           width={600}
           className={"rounded-lg w-full h-56 sm:h-[32rem] object-cover"}
         />
-        <div className="prose prose-invert sm:hover:prose-a:text-primary max-w-none overflow-hidden">
+        <div className="prose prose-invert sm:prose-lg sm:hover:prose-a:text-primary max-w-none overflow-hidden">
           <PortableText value={post.body} components={PortableTextComponents} />
         </div>
       </div>
