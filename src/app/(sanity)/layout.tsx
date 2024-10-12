@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import ReturnBar from "@/components/ReturnBar";
 
 export const metadata = {
   title: 'Sanity Studio',
@@ -12,6 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-w-full">
+        <ReturnBar />
         {children}
       </body>
     </html>
