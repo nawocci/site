@@ -12,7 +12,7 @@ export default function NotFound() {
         className="rounded-lg"
       />
       <Link href="/">
-        <button className="px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:bg-opacity-80 transition-colors duration-200">
+        <button className="px-6 py-3 bg-primary text-backgroundAlt font-semibold rounded-lg hover:bg-opacity-80 transition-colors duration-200">
           Go Back Home
         </button>
       </Link>

@@ -30,7 +30,7 @@ export default async function Blog() {
               />
             </div>
             <div className="flex flex-col flex-grow p-2 lg:p-4 sm:group-hover:bg-primary sm:duration-200">
-              <p className="text-xs lg:text-base mb-1 lg:mb-2 text-primary sm:group-hover:text-white sm:duration-200">
+              <p className="text-xs lg:text-base mb-1 lg:mb-2 text-primary sm:group-hover:text-white dark:sm:group-hover:text-black sm:duration-200">
                 {post.postDate}
               </p>
               <h2 className="font-bold text-base lg:text-2xl mb-1 lg:mb-2">

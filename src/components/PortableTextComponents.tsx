@@ -1,9 +1,7 @@
 import type { PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-import CopyButton from './CopyButton';
+import CodeBlock from "@/components/CodeBlock";
 
 const PortableTextComponents: PortableTextComponents = {
   types: {
@@ -26,29 +24,7 @@ const PortableTextComponents: PortableTextComponents = {
       );
     },
     code: ({ value }) => (
-      <div className="my-4 overflow-hidden rounded-md">
-        {value.filename && (
-          <div className="bg-[#1E1E1E] text-text p-2 text-sm flex items-center justify-between border-b border-[#333333]">
-            <span className="truncate mr-2">{value.filename}</span>
-            <CopyButton text={value.code} />
-          </div>
-        )}
-        <div className="overflow-x-auto">
-          <SyntaxHighlighter
-            language={value.language || 'text'}
-            style={atomOneDark}
-            customStyle={{
-              margin: 0,
-              backgroundColor: '#1E1E1E',
-              fontSize: '0.875rem',
-              padding: '1rem',
-            }}
-            wrapLongLines
-          >
-            {value.code}
-          </SyntaxHighlighter>
-        </div>
-      </div>
+      <CodeBlock value={value}/>
     ),
   },
 };
