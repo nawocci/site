@@ -33,7 +33,7 @@ export default async function Blog() {
               <p className="text-xs lg:text-base mb-1 lg:mb-2 text-primary sm:group-hover:text-white dark:sm:group-hover:text-black sm:duration-200">
                 {post.postDate}
               </p>
-              <h2 className="font-bold text-base lg:text-2xl mb-1 lg:mb-2">
+              <h2 className="font-bold text-base sm:group-hover:text-white dark:sm:group-hover:text-black duration-200 lg:text-2xl mb-1 lg:mb-2">
                 {post.title}
               </h2>
             </div>
