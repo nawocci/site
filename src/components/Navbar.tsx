@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
       <div className="flex justify-between items-center min-h-24 sm:min-h-32">
         <a href="/" className="flex items-center gap-4">
-          <Image src="https://github.com/nawocci.png" alt="logo" width={32} height={32} className="rounded-full sm:w-10 sm:h-10" />
+          <Image src="https://github.com/nawocci.png" alt="logo" width={32} height={32} className="rounded-full sm:w-10 sm:h-10 border border-solid border-border" />
           <h1 className="text-xl sm:text-2xl font-semibold"><span className="hidden sm:inline">Naufal&nbsp;</span>Altaf</h1>
         </a>
         <div className="flex items-center gap-6">
