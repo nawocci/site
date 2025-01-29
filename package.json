@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/types": "^2.0.13",
     "@sanity/icons": "^3.5.7",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.72.1",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
