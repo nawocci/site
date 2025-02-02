@@ -8,9 +8,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const components = {
@@ -34,7 +34,8 @@ const components = {
 };
 
 export default async function BlogPost({ params }: Props) {
-  const post = await client.fetch<Post>(postQuery, { slug: params.slug });
+  const { slug } = await params;
+  const post = await client.fetch<Post>(postQuery, { slug });
 
   if (!post) {
     notFound();
