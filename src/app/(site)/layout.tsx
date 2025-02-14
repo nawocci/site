@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Figtree } from "next/font/google";
 import Navbar from "@/app/(site)/components/Navbar";
 import Footer from "@/app/(site)/components/Footer";
 
@@ -8,6 +9,8 @@ export const metadata: Metadata = {
   description: "Naufal Altaf's personal website",
 };
 
+const figtree = Figtree({ subsets: ["latin"] });
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -15,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className={`antialiased ${figtree.className}`}>
         <div className="min-h-[100dvh] flex justify-center px-4 md:px-0">
           <div className="w-full md:max-w-5xl flex flex-col">
             <Navbar />
