@@ -5,7 +5,8 @@ export const postsQuery = groq`
     _id,
     title,
     slug,
-    mainImage
+    mainImage,
+    _createdAt
   }
 `;
 
@@ -15,6 +16,8 @@ export const postQuery = groq`
     title,
     slug,
     mainImage,
-    body
+    body,
+    _createdAt,
+    _updatedAt
   }
 `; 

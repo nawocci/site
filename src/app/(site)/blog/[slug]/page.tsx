@@ -45,6 +45,8 @@ export default async function BlogPost({ params }: Props) {
     <article>
       <Link href="/blog">Back</Link>
       <h1>Title:{post.title}</h1>
+      <h1>{new Date(post._createdAt).toLocaleDateString()}</h1>
+      <h1>{new Date(post._createdAt).toLocaleDateString()}</h1>
       
       {post.mainImage && (
         <Image

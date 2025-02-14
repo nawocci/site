@@ -25,6 +25,7 @@ export default async function Blog() {
                 />
               )}
               <h2>{post.title}</h2>
+              <h2>{new Date(post._createdAt).toLocaleDateString()}</h2>
             </Link>
           </li>
         ))}

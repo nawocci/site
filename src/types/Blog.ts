@@ -8,8 +8,10 @@ export interface Posts {
     current: string;
   };
   mainImage: SanityImageSource;
+  _createdAt: string;
 }
 
 export interface Post extends Posts {
   body: PortableTextBlock[];
+  _modifiedAt: string;
 } 
