@@ -1,10 +1,12 @@
-import Link from "next/link";
-
 export default function Home() {
   return (
-    <main>
-      <h1>Hello World</h1>
-      <Link href="/blog">Blog</Link>
-    </main>
+    <div className="w-full flex flex-col justify-center items-center gap-3 sm:gap-6">
+      <h1 className="text-center text-3xl sm:text-7xl font-semibold">
+        Student & Developer<br/>Based in Indonesia
+      </h1>
+      <p className="text-center text-sm sm:text-lg text-secondary">
+        Hi, I&apos;m Naufal Altaf, a passionate Information Systems student and developer. I have interest in<br/>full stack and Android Open Source Project (AOSP) development.
+      </p>
+    </div>
   );
 }
