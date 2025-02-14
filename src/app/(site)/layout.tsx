@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased ${figtree.className}`}>
+      <body className={`antialiased ${figtree.className} bg-background text-text`}>
         <div className="min-h-[100dvh] flex justify-center px-4 md:px-0">
           <div className="w-full md:max-w-5xl flex flex-col">
             <Navbar />

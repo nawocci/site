@@ -19,7 +19,15 @@ export default {
             }
           }
         }
-      }
+      },
+      colors: {
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        background: 'var(--color-background)',
+        backgroundAlt: 'var(--color-background-alt)',
+        text: 'var(--color-text)',
+        border: 'var(--color-border)',
+      },
     },
   },
   plugins: [
