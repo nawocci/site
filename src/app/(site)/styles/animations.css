@@ -1,0 +1,13 @@
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @media (min-width: 1024px) {
+        .hover\:flicker:hover {
+            animation: flicker 0.1s infinite;
+            will-change: opacity;
+        }
+    }
+}
