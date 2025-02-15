@@ -24,14 +24,14 @@ export default async function Blog() {
                 alt={post.title}
                 width={1000}
                 height={500}
-                className="object-cover h-full w-full sm:group-hover:scale-110 duration-200"
+                className="object-cover h-full w-full lg:group-hover:scale-110 duration-200"
               />
             </div>
-            <div className="flex flex-col flex-grow p-2 sm:p-4 space-y-2 sm:group-hover:bg-primary duration-200">
-              <time className="text-xs lg:text-base mb-1 lg:mb-2 text-primary sm:group-hover:text-white dark:sm:group-hover:text-black sm:duration-200">
+            <div className="flex flex-col flex-grow p-2 sm:p-4 space-y-2 lg:group-hover:bg-primary duration-200">
+              <time className="text-xs lg:text-base mb-1 lg:mb-2 text-primary lg:group-hover:text-white dark:lg:group-hover:text-black duration-200">
                 {new Date(post._createdAt).toLocaleDateString()}
               </time>
-              <h2 className="font-bold text-base sm:group-hover:text-white dark:sm:group-hover:text-black duration-200 lg:text-2xl mb-1 lg:mb-2">
+              <h2 className="font-bold text-base lg:group-hover:text-white dark:lg:group-hover:text-black duration-200 lg:text-2xl mb-1 lg:mb-2">
                 {post.title}
               </h2>
             </div>

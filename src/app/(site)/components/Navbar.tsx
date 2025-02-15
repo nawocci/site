@@ -50,7 +50,7 @@ export default function Navbar() {
           height={32} 
           className="rounded-full sm:w-10 sm:h-10 border border-solid border-border" 
         />
-        <h1 className="text-xl sm:text-2xl font-semibold hover:text-primary hover:flicker">
+        <h1 className="text-xl sm:text-2xl font-semibold lg:hover:text-primary hover:flicker">
           <span className="hidden sm:inline">Naufal&nbsp;</span>
           <span className="">Altaf</span>
         </h1>
