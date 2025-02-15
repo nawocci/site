@@ -8,6 +8,18 @@ import Link from "next/link";
 export default async function Blog() {
   const posts = await client.fetch<Posts[]>(postsQuery);
 
+  if (!posts || posts.length === 0) {
+    return (
+      <main className="w-full flex flex-col items-center justify-center gap-4 animate-fadeIn">
+        <h1 className="text-7xl sm:text-9xl font-bold">Oops</h1>
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-xl sm:text-2xl">There&apos;s nothing to show here</p>
+          <Link href="/" className="text-md sm:text-xl text-primary lg:hover:underline">Return to Home</Link>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="w-full space-y-10 animate-fadeIn">
       <h1 className="text-4xl sm:text-6xl font-bold">Blog</h1>
