@@ -57,7 +57,7 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-12">
+    <div className="w-full max-w-3xl mx-auto space-y-12 animate-fadeIn">
       <div className="flex flex-col items-center space-y-4">
         <time className="text-base text-secondary font-medium">{new Date(post._createdAt).toLocaleDateString()}</time>
         <h1 className="text-3xl sm:text-5xl font-bold">{post.title}</h1>

@@ -9,7 +9,7 @@ export default async function Blog() {
   const posts = await client.fetch<Posts[]>(postsQuery);
 
   return (
-    <main className="w-full space-y-10">
+    <main className="w-full space-y-10 animate-fadeIn">
       <h1 className="text-4xl sm:text-6xl font-bold">Blog</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
