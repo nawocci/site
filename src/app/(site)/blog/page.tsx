@@ -9,27 +9,35 @@ export default async function Blog() {
   const posts = await client.fetch<Posts[]>(postsQuery);
 
   return (
-    <main className="container mx-auto p-4">
-      <h1 className="text-2xl mb-4">Blog</h1>
-      
-      <ul className="space-y-4">
+    <main className="w-full space-y-10">
+      <h1 className="text-4xl sm:text-6xl font-bold">Blog</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
-          <li key={post._id} className="bg-yellow-400">
-            <Link href={`/blog/${post.slug.current}`}>
-              {post.mainImage && (
-                <Image
-                  src={urlFor(post.mainImage).width(400).height(300).url()}
-                  alt={post.title}
-                  width={400}
-                  height={300}
-                />
-              )}
-              <h2>{post.title}</h2>
-              <h2>{new Date(post._createdAt).toLocaleDateString()}</h2>
-            </Link>
-          </li>
+          <Link
+            key={post._id}
+            href={`/blog/${post.slug.current}`}
+            className="group flex flex-col rounded-lg border border-border overflow-hidden"
+          >
+            <div className="relative h-40 lg:h-52 overflow-hidden">
+              <Image
+                src={urlFor(post.mainImage).url()}
+                alt={post.title}
+                width={1000}
+                height={500}
+                className="object-cover h-full w-full sm:group-hover:scale-110 duration-200"
+              />
+            </div>
+            <div className="flex flex-col flex-grow p-2 sm:p-4 space-y-2 sm:group-hover:bg-primary duration-200">
+              <time className="text-xs lg:text-base mb-1 lg:mb-2 text-primary sm:group-hover:text-white dark:sm:group-hover:text-black sm:duration-200">
+                {new Date(post._createdAt).toLocaleDateString()}
+              </time>
+              <h2 className="font-bold text-base sm:group-hover:text-white dark:sm:group-hover:text-black duration-200 lg:text-2xl mb-1 lg:mb-2">
+                {post.title}
+              </h2>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </main>
   );
 }
