@@ -5,7 +5,6 @@ import { Post } from "@/types/Blog";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 
 interface Props {
   params: Promise<{
@@ -20,13 +19,18 @@ const components = {
         return null;
       }
       return (
-        <div className="my-8 relative w-full aspect-video">
-          <Image
-            src={urlFor(value).width(800).height(450).url()}
-            alt={value.alt || ' '}
-            fill
-            className="object-cover rounded-lg"
-          />
+        <div className="flex flex-col items-center">
+          <div className="relative w-full max-w-2xl">
+            <Image
+              src={urlFor(value).url()}
+              alt={value.alt}
+              width={800}
+              height={450}
+              className="rounded-lg"
+              style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+            />
+          </div>
+          <p className="text-sm text-secondary italic">{value.alt}</p>
         </div>
       );
     },
@@ -42,25 +46,22 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <article>
-      <Link href="/blog">Back</Link>
-      <h1>Title:{post.title}</h1>
-      <h1>{new Date(post._createdAt).toLocaleDateString()}</h1>
-      <h1>{new Date(post._createdAt).toLocaleDateString()}</h1>
-      
-      {post.mainImage && (
-        <Image
-          src={urlFor(post.mainImage).width(800).height(400).url()}
-          alt={post.title}
-          width={800}
-          height={400}
-          priority
-        />
-      )}
-
-      <div className="prose prose-lg">
-        <PortableText value={post.body} components={components} />
+    <div className="w-full max-w-3xl mx-auto space-y-12">
+      <div className="flex flex-col items-center space-y-4">
+        <time className="text-base text-secondary font-medium">{new Date(post._createdAt).toLocaleDateString()}</time>
+        <h1 className="text-3xl sm:text-5xl font-bold">{post.title}</h1>
       </div>
-    </article>
+      <Image
+        src={urlFor(post.mainImage).url()}
+        alt={post.title}
+        width={600}
+        height={300}
+        priority
+        className="rounded-lg w-full aspect-video object-cover"
+      />
+      <article className="max-w-none prose dark:prose-invert sm:prose-lg sm:hover:prose-a:text-primary prose-img:my-0">
+        <PortableText value={post.body} components={components} />
+      </article>
+    </div>
   );
 } 
