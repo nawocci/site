@@ -12,9 +12,18 @@ interface Props {
   }>;
 }
 
+interface SanityImage {
+  value: {
+    asset?: {
+      _ref: string;
+    };
+    alt?: string;
+  };
+}
+
 const components = {
   types: {
-    image: ({ value }: any) => {
+    image: ({ value }: SanityImage) => {
       if (!value?.asset?._ref) {
         return null;
       }
@@ -23,14 +32,16 @@ const components = {
           <div className="relative w-full max-w-2xl">
             <Image
               src={urlFor(value).url()}
-              alt={value.alt}
+              alt={value.alt || ''}
               width={800}
               height={450}
               className="rounded-lg"
               style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
             />
           </div>
-          <p className="text-sm text-secondary italic">{value.alt}</p>
+          {value.alt && (
+            <p className="text-sm text-secondary italic">{value.alt}</p>
+          )}
         </div>
       );
     },
