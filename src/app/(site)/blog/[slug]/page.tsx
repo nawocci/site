@@ -6,6 +6,8 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+export const fetchCache = 'force-no-store';
+
 interface Props {
   params: Promise<{
     slug: string;

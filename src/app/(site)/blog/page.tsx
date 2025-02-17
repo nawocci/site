@@ -5,6 +5,8 @@ import { Posts } from "@/types/Blog";
 import Image from "next/image";
 import Link from "next/link";
 
+export const fetchCache = 'force-no-store';
+
 export default async function Blog() {
   const posts = await client.fetch<Posts[]>(postsQuery);
 
