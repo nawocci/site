@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiOutlineBookOpen } from "react-icons/hi";
-import { HiOutlineEnvelope } from "react-icons/hi2";
+import { HiOutlineCloud, HiOutlineEnvelope } from "react-icons/hi2";
 
 interface NavLinkProps {
   href: string;
@@ -61,6 +61,12 @@ export default function Navbar() {
           icon={<HiOutlineBookOpen className="w-5 h-5 sm:hidden" />}
         >
           Blog
+        </NavLink>
+        <NavLink 
+          href="/cloud"
+          icon={<HiOutlineCloud className="w-5 h-5 sm:hidden" />}
+        >
+          Cloud
         </NavLink>
         <NavLink 
           href="mailto:me@altaf.xyz"
