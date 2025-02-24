@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.css";
 import { Figtree } from "next/font/google";
-import Navbar from "@/app/(site)/components/Navbar";
-import Footer from "@/app/(site)/components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Naufal Altaf",
