@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@azure/identity": "^4.7.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "@microsoft/microsoft-graph-types": "^2.40.0",
     "@portabletext/types": "^2.0.13",
     "@sanity/icons": "^3.5.7",
     "@sanity/image-url": "^1.1.0",

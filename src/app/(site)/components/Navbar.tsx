@@ -63,10 +63,10 @@ export default function Navbar() {
           Blog
         </NavLink>
         <NavLink 
-          href="/cloud"
+          href="/drive"
           icon={<HiOutlineCloud className="w-5 h-5 sm:hidden" />}
         >
-          Cloud
+          Drive
         </NavLink>
         <NavLink 
           href="mailto:me@altaf.xyz"

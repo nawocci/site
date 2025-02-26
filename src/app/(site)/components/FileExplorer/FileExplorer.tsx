@@ -9,17 +9,25 @@ interface FileExplorerProps {
 }
 
 export function FileExplorer({ items }: FileExplorerProps) {
+  if (!items || items.length === 0) {
+    return <div className="text-secondary italic">No items found</div>;
+  }
+
   return (
     <div className="space-y-1">
-      {items.map((item) => (
-        <div key={item.id}>
-          {item.type === 'folder' ? (
-            <Folder item={item} />
-          ) : (
-            <File item={item} />
-          )}
-        </div>
-      ))}
+      {items.map((item) => {
+        const isFolder = Boolean(item.folder);
+        
+        return (
+          <div key={item.id}>
+            {isFolder ? (
+              <Folder item={item} />
+            ) : (
+              <File item={item} />
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

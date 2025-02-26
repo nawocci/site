@@ -6,8 +6,27 @@ interface FileProps {
 }
 
 export const File = ({ item }: FileProps) => {
+  if (!item.webUrl) {
+    return (
+      <div className="flex items-center gap-2 sm:gap-3 w-full p-2 sm:p-3 rounded-md transition-colors opacity-50">
+        <HiDocument className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
+        <span className="text-base sm:text-lg flex-grow truncate">
+          {item.name}
+        </span>
+        <span className="text-xs sm:text-sm text-secondary italic whitespace-nowrap">
+          (unavailable)
+        </span>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex items-center gap-2 sm:gap-3 w-full p-2 sm:p-3 rounded-md transition-colors lg:hover:bg-backgroundAlt">
+    <a
+      href={item.webUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2 sm:gap-3 w-full p-2 sm:p-3 rounded-md transition-colors lg:hover:bg-backgroundAlt"
+    >
       <HiDocument className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
       <span className="text-base sm:text-lg flex-grow truncate">
         {item.name}
@@ -19,6 +38,6 @@ export const File = ({ item }: FileProps) => {
             : `${(item.size / 1024 / 1024).toFixed(1)} MB`
         ) : '0.0 MB'})
       </span>
-    </div>
+    </a>
   );
 }; 
