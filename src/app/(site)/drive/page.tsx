@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import FileExplorer from '@/app/(site)/components/FileExplorer/FileExplorer';
+import FileExplorer from '@/components/FileExplorer/FileExplorer';
 import { FileItem } from '@/types/FileItem';
 
 export default function Drive() {
