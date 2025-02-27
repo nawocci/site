@@ -72,7 +72,7 @@ export default async function BlogPost({ params }: Props) {
         width={600}
         height={300}
         priority
-        className="rounded-lg w-full lg:w-5/6 aspect-video object-cover mx-auto"
+        className="rounded-lg w-full lg:w-5/6 aspect-video object-cover mx-auto border-[1px] border-backgroundAlt"
       />
       <article className="max-w-3xl mx-auto prose dark:prose-invert sm:prose-lg lg:hover:prose-a:text-primary prose-img:my-0">
         <PortableText value={post.body} components={components} />
