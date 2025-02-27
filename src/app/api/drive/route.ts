@@ -1,5 +1,6 @@
 import { graphClient } from "@/utils/graphClient";
 import { NextRequest, NextResponse } from "next/server";
+import {FileItem} from "@/types/FileItem";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -11,7 +12,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    let endpoint = "";
+    let endpoint: string;
     if (path) {
       endpoint = `/users/${userId}/drive/items/${path}/children`;
     } else {
@@ -20,11 +21,25 @@ export async function GET(request: NextRequest) {
 
     const response = await graphClient.api(endpoint)
       .header('Prefer', 'query-response-timeout=60')
-      .select('id,name,folder,file,size,webUrl')
+      .select('id,name,folder,file,size')
       .orderby('name asc')
       .get();
 
-    return NextResponse.json(response);
+    // Get download URLs for files
+    const items = await Promise.all(
+      response.value.map(async (item: FileItem) => {
+        if (item.file) {
+          const downloadResponse = await graphClient
+            .api(`/users/${userId}/drive/items/${item.id}`)
+            .select('@microsoft.graph.downloadUrl')
+            .get();
+          return { ...item, '@microsoft.graph.downloadUrl': downloadResponse['@microsoft.graph.downloadUrl'] };
+        }
+        return item;
+      })
+    );
+
+    return NextResponse.json({ value: items });
   } catch (error) {
     console.error("Error fetching drive items:", error);
     return NextResponse.json(
