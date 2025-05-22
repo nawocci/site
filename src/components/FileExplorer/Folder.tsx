@@ -55,7 +55,7 @@ export const Folder = ({ item }: FolderProps) => {
             {!isEmpty && (
               isOpen ? <HiChevronDown className="w-4 h-4 sm:w-5 sm:h-5" /> : <HiChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             )}
-            {isEmpty && <div className="w-4 sm:w-5" />}
+            {isEmpty && <div className="w-4 h-4 sm:w-5 sm:h-5" />}
           </>
         )}
         <HiFolder className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
