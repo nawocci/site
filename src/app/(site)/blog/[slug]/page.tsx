@@ -5,6 +5,8 @@ import { Post } from "@/types/Blog";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,6 +42,38 @@ const components = {
         </div>
       );
     },
+    codeBlock: ({ value }: any) => {
+      const { language, code } = value;
+      
+      return (
+        <div className="my-6">
+          {language && (
+            <div className="bg-[#FFD4C4] dark:bg-[#4A2D24] px-4 py-2 rounded-t-lg text-sm font-mono text-[#8B3A1F] dark:text-[#FFB299]">
+              {language}
+            </div>
+          )}
+          <SyntaxHighlighter
+            language={language || 'text'}
+            style={oneDark}
+            customStyle={{
+              margin: 0,
+              borderRadius: language ? '0 0 0.5rem 0.5rem' : '0.5rem',
+              fontSize: '0.875rem',
+            }}
+            showLineNumbers
+          >
+            {code || ''}
+          </SyntaxHighlighter>
+        </div>
+      );
+    },
+  },
+  marks: {
+    code: ({ children }: any) => (
+      <code className="px-1.5 py-0.5 rounded bg-border text-foreground font-mono text-sm">
+        {children}
+      </code>
+    ),
   },
 };
 

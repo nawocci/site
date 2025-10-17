@@ -56,5 +56,8 @@ export const blockContentType = defineType({
         }
       ]
     }),
+    defineArrayMember({
+      type: 'codeBlock',
+    }),
   ],
 })
