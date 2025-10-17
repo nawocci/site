@@ -34,7 +34,7 @@ const components = {
             alt={value.alt || 'Blog post image'}
             width={width}
             height={height}
-            className="rounded-lg w-full max-w-2xl h-auto object-contain"
+            className="rounded-2xl w-full max-w-2xl h-auto object-contain"
           />
           {value.alt && (
             <p className="text-sm text-secondary italic">{value.alt}</p>
@@ -104,7 +104,7 @@ export default async function BlogPost({ params }: Props) {
           width={600}
           height={300}
           priority
-          className="rounded-lg w-5/6 aspect-video object-cover mx-auto border border-border"
+          className="rounded-2xl w-5/6 aspect-video object-cover mx-auto border border-border"
         />
       )}
       
