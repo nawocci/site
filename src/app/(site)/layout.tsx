@@ -14,10 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased text-foreground bg-background">
+    <html lang="en" className="flex justify-center h-full">
+      <body className="antialiased text-foreground bg-background max-w-5xl w-full flex flex-col min-h-screen">
         <Navbar />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
