@@ -30,7 +30,7 @@ export default async function Blog() {
           <Link
             key={post._id}
             href={`/blog/${post.slug.current}`}
-            className="group flex flex-col rounded-2xl border-2 border-foreground dark:border-border overflow-hidden"
+            className="group flex flex-col rounded-2xl border-2 border-border overflow-hidden"
           >
             {post.mainImage ? (
               <div className="relative h-52 overflow-hidden">
