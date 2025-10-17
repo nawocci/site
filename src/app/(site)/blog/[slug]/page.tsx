@@ -104,7 +104,7 @@ export default async function BlogPost({ params }: Props) {
           width={600}
           height={300}
           priority
-          className="rounded-2xl w-5/6 aspect-video object-cover mx-auto border border-border"
+          className="rounded-2xl w-5/6 aspect-video object-cover mx-auto border-2 border-border"
         />
       )}
       

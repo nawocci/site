@@ -20,19 +20,19 @@ export default function Navbar() {
       <div className="flex items-center gap-6">
               <Link 
         href="/blog"
-        className="flex items-center justify-center px-4 py-2 font-semibold border-foreground border rounded-2xl hover:text-primary hover:border-primary duration-200"
+        className="flex items-center justify-center px-4 py-2 font-semibold border-foreground border-2 rounded-2xl hover:text-primary hover:border-primary duration-200"
       >
           Blog
         </Link>
         <Link 
           href="/drive"
-          className="flex items-center justify-center px-4 py-2 font-semibold border-foreground border rounded-2xl hover:text-primary hover:border-primary duration-200"
+          className="flex items-center justify-center px-4 py-2 font-semibold border-foreground border-2 rounded-2xl hover:text-primary hover:border-primary duration-200"
         >
           Drive
         </Link>
         <Link 
           href="mailto:naufal@altaf.xyz"
-          className="flex items-center justify-center px-4 py-2 font-semibold border-foreground border rounded-2xl hover:text-primary hover:border-primary duration-200"
+          className="flex items-center justify-center px-4 py-2 font-semibold border-foreground border-2 rounded-2xl hover:text-primary hover:border-primary duration-200"
         >
           Contact
         </Link>
