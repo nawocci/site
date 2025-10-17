@@ -14,7 +14,7 @@ export default function Home() {
         <a 
           href="/files/CV Naufal Altaf.pdf"
           download
-          className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white rounded-2xl font-medium hover:border-primary hover:text-primary duration-200"
+          className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-foreground text-foreground rounded-2xl font-medium hover:border-primary hover:text-primary duration-200"
         >
           <HiOutlineDocumentText className="w-5 h-5" />
           <span className="font-semibold">Curriculum Vitae (CV)</span>
@@ -22,7 +22,7 @@ export default function Home() {
         <a 
           href="/files/nawo-ssh.pub"
           download
-          className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white rounded-2xl font-medium hover:border-primary hover:text-primary duration-200"
+          className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-foreground text-foreground rounded-2xl font-medium hover:border-primary hover:text-primary duration-200"
         >
           <HiOutlineLockClosed className="w-5 h-5" />
           <span className="font-semibold">SSH Key</span>
@@ -30,7 +30,7 @@ export default function Home() {
         <a 
           href="/files/nawo-gpg.pub"
           download
-          className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white rounded-2xl font-medium hover:border-primary hover:text-primary duration-200"
+          className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-foreground text-foreground rounded-2xl font-medium hover:border-primary hover:text-primary duration-200"
         >
           <HiOutlineShieldCheck className="w-5 h-5" />
           <span className="font-semibold">GPG Key</span>
