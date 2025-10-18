@@ -35,9 +35,9 @@ export async function listDriveItems(itemId?: string) {
         .api(`/users/${userId}/drive/items/${itemId}/children`)
         .get();
     } else {
-      // List root items
+      // List items from 'Index' folder
       response = await client
-        .api(`/users/${userId}/drive/root/children`)
+        .api(`/users/${userId}/drive/root:/Index:/children`)
         .get();
     }
 
