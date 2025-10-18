@@ -12,7 +12,7 @@ export default async function Blog() {
 
   if (!posts || posts.length === 0) {
     return (
-      <main className="w-full flex flex-col items-center justify-center gap-4">
+      <main className="w-full h-full flex flex-col items-center justify-center gap-4">
         <h1 className="text-6xl lg:text-9xl font-bold">Oops</h1>
         <div className="flex flex-col items-center gap-4">
           <p className="text-lg lg:text-2xl">There&apos;s nothing to show here</p>

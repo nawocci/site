@@ -178,6 +178,16 @@ export default function DriveList({ initialItems }: DriveListProps) {
     return sorted;
   }, [items.root, sortBy, sortOrder]);
 
+  // Empty state
+  if (!sortedItems || sortedItems.length === 0) {
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center gap-4 py-20">
+        <h2 className="text-4xl lg:text-6xl font-bold">Oops</h2>
+        <p className="text-base lg:text-xl text-secondary">No files to show here</p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full space-y-4 lg:space-y-6">
       {/* Controls */}
