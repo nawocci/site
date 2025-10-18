@@ -67,7 +67,7 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
   return (
     <div>
       <div 
-        className="flex items-center gap-3 py-3 px-4 hover:bg-border cursor-pointer"
+        className="flex items-center gap-3 py-4 px-4 hover:bg-border cursor-pointer"
         onClick={handleClick}
       >
         {isFolder ? (
