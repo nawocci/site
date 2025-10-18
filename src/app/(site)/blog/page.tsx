@@ -37,8 +37,8 @@ export default async function Blog() {
                 <Image
                   src={urlFor(post.mainImage).url()}
                   alt={post.mainImage.alt || post.title}
-                  width={1000}
-                  height={500}
+                  width={post.mainImage.asset?.metadata?.dimensions?.width || 1000}
+                  height={post.mainImage.asset?.metadata?.dimensions?.height || 500}
                   className="object-cover h-full w-full group-hover:scale-110 duration-200"
                 />
               </div>

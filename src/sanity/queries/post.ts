@@ -5,7 +5,16 @@ export const postsQuery = groq`
     _id,
     title,
     slug,
-    mainImage,
+    mainImage {
+      ...,
+      asset->{
+        _id,
+        url,
+        metadata {
+          dimensions
+        }
+      }
+    },
     _createdAt
   }
 `;
