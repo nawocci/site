@@ -83,7 +83,7 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
           <HiOutlineDocument className="w-6 h-6" />
         )}
         <span className="flex-1 text-base">{item.name}</span>
-        {isLoading && <span className="text-base text-gray-400">Loading...</span>}
+        {isLoading && <LoadingSpinner size="sm" />}
         {!isLoading && item.size && <span className="text-base text-gray-400">{formatBytes(item.size)}</span>}
       </div>
       {isFolder && isExpanded && !isLoading && sortedChildren && (
