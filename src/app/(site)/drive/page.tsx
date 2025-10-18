@@ -1,7 +1,13 @@
-export default function Drive() {
+import { listDriveItems } from '@/lib/graphClient';
+import DriveList from '../components/DriveList';
+
+export default async function Drive() {
+  const items = await listDriveItems();
+
   return (
-    <div>
-      <h1>Hello World - Drive</h1>
-    </div>
+    <main className="w-full space-y-10">
+      <h1 className="text-6xl font-bold">Drive</h1>
+      <DriveList initialItems={items} />
+    </main>
   );
 }

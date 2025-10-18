@@ -1,0 +1,132 @@
+'use client';
+
+import { useState } from 'react';
+import { HiOutlineFolder, HiOutlineDocument, HiOutlineChevronRight, HiOutlineChevronDown } from 'react-icons/hi';
+
+interface DriveItem {
+  id: string;
+  name: string;
+  folder?: any;
+  file?: any;
+  size?: number;
+  webUrl?: string;
+}
+
+interface FileItemProps {
+  item: DriveItem;
+  onFolderClick: (itemId: string) => void;
+  expandedFolders: Set<string>;
+  allItems: Record<string, DriveItem[]>;
+}
+
+function FileItem({ item, onFolderClick, expandedFolders, allItems }: FileItemProps) {
+  const isFolder = !!item.folder;
+  const isExpanded = expandedFolders.has(item.id);
+  const children = allItems[item.id];
+
+  const handleClick = () => {
+    if (isFolder) {
+      onFolderClick(item.id);
+    }
+  };
+
+  return (
+    <div>
+      <div 
+        className="flex items-center gap-3 py-3 px-4 hover:bg-border cursor-pointer"
+        onClick={handleClick}
+      >
+        {isFolder ? (
+          isExpanded ? 
+            <HiOutlineChevronDown className="w-5 h-5" /> : 
+            <HiOutlineChevronRight className="w-5 h-5" />
+        ) : (
+          <HiOutlineChevronRight className="w-5 h-5 text-gray-400" />
+        )}
+        {isFolder ? (
+          <HiOutlineFolder className="w-6 h-6 text-primary" />
+        ) : (
+          <HiOutlineDocument className="w-6 h-6" />
+        )}
+        <span className="flex-1 text-base">{item.name}</span>
+        {item.size && <span className="text-base text-secondary">{formatBytes(item.size)}</span>}
+      </div>
+      {isFolder && isExpanded && children && (
+        <div className="ml-6 border-l-2 border-border">
+          {children.map((child) => (
+            <FileItem 
+              key={child.id} 
+              item={child} 
+              onFolderClick={onFolderClick}
+              expandedFolders={expandedFolders}
+              allItems={allItems}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function formatBytes(bytes: number): string {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+}
+
+interface DriveListProps {
+  initialItems: DriveItem[];
+}
+
+export default function DriveList({ initialItems }: DriveListProps) {
+  const [items, setItems] = useState<Record<string, DriveItem[]>>({ root: initialItems });
+  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState<Set<string>>(new Set());
+
+  const handleFolderClick = async (folderId: string) => {
+    if (expandedFolders.has(folderId)) {
+      // Collapse folder
+      const newExpanded = new Set(expandedFolders);
+      newExpanded.delete(folderId);
+      setExpandedFolders(newExpanded);
+    } else {
+      // Expand folder
+      if (!items[folderId]) {
+        // Fetch folder contents
+        setLoading(new Set(loading).add(folderId));
+        try {
+          const response = await fetch(`/api/drive?itemId=${folderId}`);
+          const data = await response.json();
+          setItems({ ...items, [folderId]: data });
+        } catch (error) {
+          console.error('Error loading folder:', error);
+        }
+        setLoading((prev) => {
+          const newLoading = new Set(prev);
+          newLoading.delete(folderId);
+          return newLoading;
+        });
+      }
+      
+      const newExpanded = new Set(expandedFolders);
+      newExpanded.add(folderId);
+      setExpandedFolders(newExpanded);
+    }
+  };
+
+  return (
+    <div className="w-full">
+      {items.root.map((item) => (
+        <FileItem 
+          key={item.id} 
+          item={item} 
+          onFolderClick={handleFolderClick}
+          expandedFolders={expandedFolders}
+          allItems={items}
+        />
+      ))}
+    </div>
+  );
+}
