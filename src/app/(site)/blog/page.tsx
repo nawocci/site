@@ -5,7 +5,7 @@ import { Posts } from "@/types/Blog";
 import Image from "next/image";
 import Link from "next/link";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 0; // Only revalidate via webhook
 
 export default async function Blog() {
   const posts = await client.fetch<Posts[]>(postsQuery);

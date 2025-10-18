@@ -7,7 +7,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import CodeBlock from "../../components/CodeBlock";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 0; // Only revalidate via webhook
 
 interface Props {
   params: Promise<{
