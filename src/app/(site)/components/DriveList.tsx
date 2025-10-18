@@ -80,7 +80,7 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
           <HiOutlineDocument className="w-6 h-6" />
         )}
         <span className="flex-1 text-base">{item.name}</span>
-        {item.size && <span className="text-base text-secondary">{formatBytes(item.size)}</span>}
+        {item.size && <span className="text-base text-gray-400">{formatBytes(item.size)}</span>}
       </div>
       {isFolder && isExpanded && sortedChildren && (
         <div className={`ml-6 ${!isLast ? 'border-l-2 border-border' : ''}`}>
