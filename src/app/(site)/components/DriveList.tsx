@@ -21,9 +21,10 @@ interface FileItemProps {
   sortBy: 'name' | 'size';
   sortOrder: 'asc' | 'desc';
   isLast?: boolean;
+  isFirst?: boolean;
 }
 
-function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sortOrder, isLast }: FileItemProps) {
+function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sortOrder, isLast, isFirst }: FileItemProps) {
   const isFolder = !!item.folder;
   const isExpanded = expandedFolders.has(item.id);
   const children = allItems[item.id];
@@ -92,6 +93,7 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
               allItems={allItems}
               sortBy={sortBy}
               sortOrder={sortOrder}
+              isFirst={index === 0}
               isLast={index === sortedChildren.length - 1}
             />
           ))}
@@ -225,7 +227,7 @@ export default function DriveList({ initialItems }: DriveListProps) {
       </div>
 
       {/* File list */}
-      <div className="border-2 border-border rounded-2xl">
+      <div className="border-2 border-border rounded-2xl overflow-hidden">
         {sortedItems.map((item, index) => (
           <FileItem 
             key={item.id} 
@@ -235,6 +237,7 @@ export default function DriveList({ initialItems }: DriveListProps) {
             allItems={items}
             sortBy={sortBy}
             sortOrder={sortOrder}
+            isFirst={index === 0}
             isLast={index === sortedItems.length - 1}
           />
         ))}
