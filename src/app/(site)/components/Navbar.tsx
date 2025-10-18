@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { HiOutlineDocumentText, HiOutlineFolder, HiOutlineMail } from "react-icons/hi";
+import { HiOutlineDocumentText, HiOutlineFolder, HiOutlineMail, HiOutlineHome } from "react-icons/hi";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -55,7 +55,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Navbar - Top */}
-      <Link href="/" className="lg:hidden relative flex justify-center items-center min-h-20 border-b-2 border-border mb-6">
+      <div className="lg:hidden relative flex justify-center items-center min-h-20 border-b-2 border-border mb-6">
         <div className="absolute left-4">
           <Image 
             src="https://github.com/nawocci.png"
@@ -69,11 +69,21 @@ export default function Navbar() {
           <span className="inline">Naufal&nbsp;</span>
           <span className="">Altaf</span>
         </h1>
-      </Link>
+      </div>
 
       {/* Mobile Bottom Navigation */}
       <nav className="lg:hidden fixed bottom-6 left-4 right-4 bg-background border-2 border-border rounded-full shadow-lg z-50">
         <div className="flex justify-around items-center h-16">
+          <Link 
+            href="/"
+            className={`flex items-center justify-center w-16 h-16 duration-200 ${
+              pathname === '/'
+                ? 'text-primary'
+                : 'text-foreground'
+            }`}
+          >
+            <HiOutlineHome className="w-7 h-7" />
+          </Link>
           <Link 
             href="/blog"
             className={`flex items-center justify-center w-16 h-16 duration-200 ${
