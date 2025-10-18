@@ -20,9 +20,10 @@ interface FileItemProps {
   allItems: Record<string, DriveItem[]>;
   sortBy: 'name' | 'size';
   sortOrder: 'asc' | 'desc';
+  isLast?: boolean;
 }
 
-function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sortOrder }: FileItemProps) {
+function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sortOrder, isLast }: FileItemProps) {
   const isFolder = !!item.folder;
   const isExpanded = expandedFolders.has(item.id);
   const children = allItems[item.id];
@@ -81,8 +82,8 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
         {item.size && <span className="text-base text-secondary">{formatBytes(item.size)}</span>}
       </div>
       {isFolder && isExpanded && sortedChildren && (
-        <div className="ml-6 border-l-2 border-border">
-          {sortedChildren.map((child) => (
+        <div className={`ml-6 ${!isLast ? 'border-l-2 border-border' : ''}`}>
+          {sortedChildren.map((child, index) => (
             <FileItem 
               key={child.id} 
               item={child} 
@@ -91,6 +92,7 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
               allItems={allItems}
               sortBy={sortBy}
               sortOrder={sortOrder}
+              isLast={index === sortedChildren.length - 1}
             />
           ))}
         </div>
@@ -224,7 +226,7 @@ export default function DriveList({ initialItems }: DriveListProps) {
 
       {/* File list */}
       <div className="border-2 border-border rounded-2xl">
-        {sortedItems.map((item) => (
+        {sortedItems.map((item, index) => (
           <FileItem 
             key={item.id} 
             item={item} 
@@ -233,6 +235,7 @@ export default function DriveList({ initialItems }: DriveListProps) {
             allItems={items}
             sortBy={sortBy}
             sortOrder={sortOrder}
+            isLast={index === sortedItems.length - 1}
           />
         ))}
       </div>
