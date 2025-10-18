@@ -223,7 +223,7 @@ export default function DriveList({ initialItems }: DriveListProps) {
       </div>
 
       {/* File list */}
-      <div>
+      <div className="border-2 border-border rounded-2xl">
         {sortedItems.map((item) => (
           <FileItem 
             key={item.id} 
