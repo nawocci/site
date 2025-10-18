@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="flex items-center justify-center w-full min-h-32">
+    <footer className="hidden lg:flex items-center justify-center w-full min-h-32">
       <div className="flex flex-col items-center gap-2 text-center text-sm">
         <p>
           &copy; {new Date().getFullYear()} Naufal Altaf. All rights reserved.
