@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { HiOutlineFolder, HiOutlineDocument, HiOutlineChevronRight, HiOutlineChevronDown, HiArrowUp, HiArrowDown, HiOutlineDownload } from 'react-icons/hi';
+import { HiOutlineFolder, HiOutlineDocument, HiOutlineChevronRight, HiOutlineChevronDown, HiArrowUp, HiArrowDown, HiOutlineDownload, HiOutlineSortAscending, HiOutlineSortDescending } from 'react-icons/hi';
 import LoadingSpinner from './LoadingSpinner';
 
 interface DriveItem {
@@ -67,24 +67,24 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
   return (
     <div>
       <div 
-        className="flex items-center gap-3 py-4 px-4 hover:bg-border cursor-pointer"
+        className="flex items-center gap-2 lg:gap-3 py-3 lg:py-4 px-3 lg:px-4 hover:bg-border cursor-pointer"
         onClick={handleClick}
       >
         {isFolder ? (
           isExpanded ? 
-            <HiOutlineChevronDown className="w-5 h-5" /> : 
-            <HiOutlineChevronRight className="w-5 h-5" />
+            <HiOutlineChevronDown className="w-4 lg:w-5 h-4 lg:h-5" /> : 
+            <HiOutlineChevronRight className="w-4 lg:w-5 h-4 lg:h-5" />
         ) : (
-          <HiOutlineDownload className="w-5 h-5" />
+          <HiOutlineDownload className="w-4 lg:w-5 h-4 lg:h-5" />
         )}
         {isFolder ? (
-          <HiOutlineFolder className="w-6 h-6 text-primary" />
+          <HiOutlineFolder className="w-5 lg:w-6 h-5 lg:h-6 text-primary" />
         ) : (
-          <HiOutlineDocument className="w-6 h-6" />
+          <HiOutlineDocument className="w-5 lg:w-6 h-5 lg:h-6" />
         )}
-        <span className="flex-1 text-base">{item.name}</span>
+        <span className="flex-1 text-sm lg:text-base">{item.name}</span>
         {isLoading && <LoadingSpinner size="sm" />}
-        {!isLoading && item.size && <span className="text-base text-gray-400">{formatBytes(item.size)}</span>}
+        {!isLoading && item.size && <span className="text-xs lg:text-base text-gray-400">{formatBytes(item.size)}</span>}
       </div>
       {isFolder && isExpanded && !isLoading && sortedChildren && (
         <div className={`ml-6 ${!isLast ? 'border-l-2 border-border' : ''}`}>
@@ -179,16 +179,16 @@ export default function DriveList({ initialItems }: DriveListProps) {
   }, [items.root, sortBy, sortOrder]);
 
   return (
-    <div className="w-full space-y-6">
+    <div className="w-full space-y-4 lg:space-y-6">
       {/* Controls */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 lg:gap-6">
         {/* Sort */}
-        <div className="flex items-center gap-3">
-          <span className="text-base font-medium">Sort by:</span>
+        <div className="flex items-center gap-2 lg:gap-3">
+          <span className="text-sm lg:text-base font-medium">Sort:</span>
           <div className="flex gap-2">
             <button
               onClick={() => setSortBy('name')}
-              className={`px-4 py-2 rounded-2xl border-2 transition-colors cursor-pointer ${
+              className={`px-3 lg:px-4 py-2 text-sm lg:text-base rounded-2xl border-2 transition-colors cursor-pointer ${
                 sortBy === 'name' 
                   ? 'border-primary bg-primary text-white' 
                   : 'border-foreground hover:bg-border'
@@ -198,7 +198,7 @@ export default function DriveList({ initialItems }: DriveListProps) {
             </button>
             <button
               onClick={() => setSortBy('size')}
-              className={`px-4 py-2 rounded-2xl border-2 transition-colors cursor-pointer ${
+              className={`px-3 lg:px-4 py-2 text-sm lg:text-base rounded-2xl border-2 transition-colors cursor-pointer ${
                 sortBy === 'size' 
                   ? 'border-primary bg-primary text-white' 
                   : 'border-foreground hover:bg-border'
@@ -210,21 +210,23 @@ export default function DriveList({ initialItems }: DriveListProps) {
         </div>
 
         {/* Sort Order */}
-        <div className="flex items-center gap-3">
-          <span className="text-base font-medium">Order:</span>
+        <div className="flex items-center gap-2 lg:gap-3">
+          <span className="text-sm lg:text-base font-medium hidden lg:inline">Order:</span>
           <button
             onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-            className="px-4 py-2 rounded-2xl border-2 border-foreground hover:bg-border transition-colors cursor-pointer flex items-center gap-2"
+            className="px-3 lg:px-4 py-2 rounded-2xl border-2 border-foreground hover:bg-border transition-colors cursor-pointer flex items-center gap-2"
           >
             {sortOrder === 'asc' ? (
               <>
-                <HiArrowUp className="w-4 h-4" />
-                Ascending
+                <HiOutlineSortAscending className="w-5 h-5 lg:hidden" />
+                <HiArrowUp className="w-4 h-4 hidden lg:block" />
+                <span className="text-sm lg:text-base hidden lg:inline">Ascending</span>
               </>
             ) : (
               <>
-                <HiArrowDown className="w-4 h-4" />
-                Descending
+                <HiOutlineSortDescending className="w-5 h-5 lg:hidden" />
+                <HiArrowDown className="w-4 h-4 hidden lg:block" />
+                <span className="text-sm lg:text-base hidden lg:inline">Descending</span>
               </>
             )}
           </button>
