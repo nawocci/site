@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en" className="flex justify-center h-full">
       <body className={`${figtree.className} antialiased text-foreground bg-background max-w-5xl w-full flex flex-col min-h-screen`}>
         <Navbar />
-        <main className="flex-grow pb-28 lg:pb-0">
+        <main className="flex-grow pb-28 lg:pb-0 px-4 lg:px-0">
           {children}
         </main>
         <Footer />
