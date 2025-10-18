@@ -20,7 +20,7 @@ export default function LoadingSpinner({ size = 'md', text }: LoadingSpinnerProp
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <HiOutlineRefresh className={`${sizeClasses[size]} animate-spin text-primary`} />
+      <HiOutlineRefresh className={`${sizeClasses[size]} text-primary animate-reverse-spin`} />
       {text && <span className={`${textSizeClasses[size]} text-gray-400`}>{text}</span>}
     </div>
   );
