@@ -64,15 +64,15 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <div className="w-full space-y-12 fade-in">
-      <header className="flex flex-col items-center space-y-4">
+    <div className="w-full space-y-8 lg:space-y-12 fade-in">
+      <header className="flex flex-col items-center space-y-3 lg:space-y-4">
         <time 
           dateTime={post._createdAt}
-          className="text-base text-secondary font-medium"
+          className="text-sm lg:text-base text-secondary font-medium"
         >
           {new Date(post._createdAt).toLocaleDateString()}
         </time>
-        <h1 className="text-5xl font-bold text-center">{post.title}</h1>
+        <h1 className="text-3xl lg:text-5xl font-bold text-center">{post.title}</h1>
       </header>
       
       {post.mainImage && (
@@ -82,11 +82,11 @@ export default async function BlogPost({ params }: Props) {
           width={600}
           height={300}
           priority
-          className="rounded-2xl w-5/6 aspect-video object-cover mx-auto border-2 border-border"
+          className="rounded-2xl w-full lg:w-5/6 aspect-video object-cover mx-auto border-2 border-border"
         />
       )}
       
-      <article className="max-w-3xl mx-auto prose dark:prose-invert prose-lg hover:prose-a:text-primary prose-img:my-0">
+      <article className="max-w-3xl mx-auto prose dark:prose-invert prose-base lg:prose-lg hover:prose-a:text-primary prose-img:my-0">
         <PortableText value={post.body} components={components} />
       </article>
     </div>

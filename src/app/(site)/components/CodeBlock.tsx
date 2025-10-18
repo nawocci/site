@@ -46,7 +46,7 @@ export default function CodeBlock({ language, code }: CodeBlockProps) {
       {!language && (
         <button
           onClick={handleCopy}
-          className="absolute top-2 right-2 z-10 flex items-center gap-1.5 px-2 py-1 rounded bg-[#FFD4C4] dark:bg-[#4A2D24] text-[#8B3A1F] dark:text-[#FFB299] opacity-0 group-hover:opacity-100 hover:bg-opacity-80 duration-200 cursor-pointer"
+          className="absolute top-2 right-2 z-10 flex items-center gap-1.5 px-2 py-1 rounded bg-[#FFD4C4] dark:bg-[#4A2D24] text-[#8B3A1F] dark:text-[#FFB299] opacity-100 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-opacity-80 duration-200 cursor-pointer"
           title="Copy code"
         >
           {copied ? (
