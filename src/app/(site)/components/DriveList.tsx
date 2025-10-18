@@ -181,7 +181,7 @@ export default function DriveList({ initialItems }: DriveListProps) {
   // Empty state
   if (!sortedItems || sortedItems.length === 0) {
     return (
-      <div className="w-full h-full flex flex-col items-center justify-center gap-4 py-20">
+      <div className="w-full h-full flex flex-col items-center justify-center gap-4 py-20 fade-in">
         <h2 className="text-4xl lg:text-6xl font-bold">Oops</h2>
         <p className="text-base lg:text-xl text-secondary">No files to show here</p>
       </div>
