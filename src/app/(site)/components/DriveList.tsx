@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { HiOutlineFolder, HiOutlineDocument, HiOutlineChevronRight, HiOutlineChevronDown, HiArrowUp, HiArrowDown } from 'react-icons/hi';
+import LoadingSpinner from './LoadingSpinner';
 
 interface DriveItem {
   id: string;
@@ -22,11 +23,13 @@ interface FileItemProps {
   sortOrder: 'asc' | 'desc';
   isLast?: boolean;
   isFirst?: boolean;
+  loadingFolders: Set<string>;
 }
 
-function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sortOrder, isLast, isFirst }: FileItemProps) {
+function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sortOrder, isLast, isFirst, loadingFolders }: FileItemProps) {
   const isFolder = !!item.folder;
   const isExpanded = expandedFolders.has(item.id);
+  const isLoading = loadingFolders.has(item.id);
   const children = allItems[item.id];
 
   // Apply sort to children
@@ -80,9 +83,10 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
           <HiOutlineDocument className="w-6 h-6" />
         )}
         <span className="flex-1 text-base">{item.name}</span>
-        {item.size && <span className="text-base text-gray-400">{formatBytes(item.size)}</span>}
+        {isLoading && <span className="text-base text-gray-400">Loading...</span>}
+        {!isLoading && item.size && <span className="text-base text-gray-400">{formatBytes(item.size)}</span>}
       </div>
-      {isFolder && isExpanded && sortedChildren && (
+      {isFolder && isExpanded && !isLoading && sortedChildren && (
         <div className={`ml-6 ${!isLast ? 'border-l-2 border-border' : ''}`}>
           {sortedChildren.map((child, index) => (
             <FileItem 
@@ -95,6 +99,7 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
               sortOrder={sortOrder}
               isFirst={index === 0}
               isLast={index === sortedChildren.length - 1}
+              loadingFolders={loadingFolders}
             />
           ))}
         </div>
@@ -239,6 +244,7 @@ export default function DriveList({ initialItems }: DriveListProps) {
             sortOrder={sortOrder}
             isFirst={index === 0}
             isLast={index === sortedItems.length - 1}
+            loadingFolders={loading}
           />
         ))}
       </div>
