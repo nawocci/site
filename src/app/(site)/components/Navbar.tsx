@@ -1,7 +1,11 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
   return (
     <nav className="flex justify-between items-center min-h-32">
       <Link href="/" className="flex items-center gap-4">
@@ -18,15 +22,23 @@ export default function Navbar() {
         </h1>
       </Link>
       <div className="flex items-center gap-6">
-              <Link 
-        href="/blog"
-        className="flex items-center justify-center px-4 py-2 font-semibold border-foreground border-2 rounded-2xl hover:text-primary hover:border-primary duration-200"
-      >
+        <Link 
+          href="/blog"
+          className={`flex items-center justify-center px-4 py-2 font-semibold border-2 rounded-2xl duration-200 ${
+            pathname.startsWith('/blog')
+              ? 'text-primary border-primary'
+              : 'border-foreground hover:text-primary hover:border-primary'
+          }`}
+        >
           Blog
         </Link>
         <Link 
           href="/drive"
-          className="flex items-center justify-center px-4 py-2 font-semibold border-foreground border-2 rounded-2xl hover:text-primary hover:border-primary duration-200"
+          className={`flex items-center justify-center px-4 py-2 font-semibold border-2 rounded-2xl duration-200 ${
+            pathname.startsWith('/drive')
+              ? 'text-primary border-primary'
+              : 'border-foreground hover:text-primary hover:border-primary'
+          }`}
         >
           Drive
         </Link>
