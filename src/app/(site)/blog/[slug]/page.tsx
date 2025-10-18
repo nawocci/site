@@ -64,7 +64,7 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <div className="w-full space-y-12">
+    <div className="w-full space-y-12 fade-in">
       <header className="flex flex-col items-center space-y-4">
         <time 
           dateTime={post._createdAt}

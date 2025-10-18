@@ -2,7 +2,7 @@ import { HiOutlineDocumentText, HiOutlineLockClosed, HiOutlineShieldCheck } from
 
 export default function Home() {
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center gap-6">
+    <div className="w-full h-full flex flex-col justify-center items-center gap-6 fade-in">
       <h1 className="text-center text-7xl font-semibold">
         Student & Developer<br/>Based in Indonesia
       </h1>

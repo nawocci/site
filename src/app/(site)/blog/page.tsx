@@ -23,7 +23,7 @@ export default async function Blog() {
   }
 
   return (
-    <main className="w-full space-y-10">
+    <main className="w-full space-y-10 fade-in">
       <h1 className="text-6xl font-bold">Blog</h1>
       <div className="grid grid-cols-3 gap-6">
         {posts.map((post) => (
