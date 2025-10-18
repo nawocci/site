@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { HiOutlineFolder, HiOutlineDocument, HiOutlineChevronRight, HiOutlineChevronDown, HiArrowUp, HiArrowDown } from 'react-icons/hi';
+import { HiOutlineFolder, HiOutlineDocument, HiOutlineChevronRight, HiOutlineChevronDown, HiArrowUp, HiArrowDown, HiOutlineDownload } from 'react-icons/hi';
 import LoadingSpinner from './LoadingSpinner';
 
 interface DriveItem {
@@ -75,7 +75,7 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
             <HiOutlineChevronDown className="w-5 h-5" /> : 
             <HiOutlineChevronRight className="w-5 h-5" />
         ) : (
-          <HiOutlineChevronRight className="w-5 h-5 text-gray-400" />
+          <HiOutlineDownload className="w-5 h-5" />
         )}
         {isFolder ? (
           <HiOutlineFolder className="w-6 h-6 text-primary" />
