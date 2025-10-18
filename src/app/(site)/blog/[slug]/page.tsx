@@ -86,7 +86,7 @@ export default async function BlogPost({ params }: Props) {
         />
       )}
       
-      <article className="max-w-3xl mx-auto prose dark:prose-invert prose-base lg:prose-lg hover:prose-a:text-primary prose-img:my-0">
+      <article className="max-w-3xl mx-auto prose dark:prose-invert prose-base lg:prose-lg prose-a:text-primary prose-a:no-underline prose-a:hover:underline prose-img:my-0">
         <PortableText value={post.body} components={components} />
       </article>
     </div>
