@@ -28,19 +28,34 @@ export async function listDriveItems(itemId?: string) {
   const userId = process.env.NEXT_PUBLIC_GRAPH_USER_ID;
   
   try {
+    let response;
     if (itemId) {
       // List children of specific folder
-      const response = await client
+      response = await client
         .api(`/users/${userId}/drive/items/${itemId}/children`)
         .get();
-      return response.value;
     } else {
       // List root items
-      const response = await client
+      response = await client
         .api(`/users/${userId}/drive/root/children`)
         .get();
-      return response.value;
     }
+
+    // Fetch download URLs for files
+    const items = await Promise.all(
+      response.value.map(async (item: any) => {
+        if (item.file) {
+          const downloadResponse = await client
+            .api(`/users/${userId}/drive/items/${item.id}`)
+            .select('@microsoft.graph.downloadUrl')
+            .get();
+          return { ...item, '@microsoft.graph.downloadUrl': downloadResponse['@microsoft.graph.downloadUrl'] };
+        }
+        return item;
+      })
+    );
+
+    return items;
   } catch (error) {
     console.error('Error fetching drive items:', error);
     throw error;

@@ -10,6 +10,7 @@ interface DriveItem {
   file?: any;
   size?: number;
   webUrl?: string;
+  '@microsoft.graph.downloadUrl'?: string;
 }
 
 interface FileItemProps {
@@ -52,6 +53,9 @@ function FileItem({ item, onFolderClick, expandedFolders, allItems, sortBy, sort
   const handleClick = () => {
     if (isFolder) {
       onFolderClick(item.id);
+    } else if (item['@microsoft.graph.downloadUrl']) {
+      // Download file using direct download URL
+      window.open(item['@microsoft.graph.downloadUrl'], '_blank');
     }
   };
 
