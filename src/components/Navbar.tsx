@@ -18,6 +18,7 @@ export default function Navbar() {
               src="https://avatars.githubusercontent.com/nawocci"
               alt="Naufal Altaf"
               fill
+              sizes="(min-width: 640px) 48px, 40px"
               className="object-cover"
             />
           </div>
