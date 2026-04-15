@@ -29,10 +29,10 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceMono.variable} antialiased`}
     >
       <body className="bg-background text-foreground font-sans min-h-screen flex flex-col">
-        <main className="mx-auto max-w-5xl w-full px-6 sm:px-0 flex-1">
-          {children}
-        </main>
-        <Footer />
+        <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 sm:px-6 lg:px-0">
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
