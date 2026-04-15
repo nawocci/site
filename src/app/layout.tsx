@@ -27,7 +27,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${spaceMono.variable} antialiased`}
     >
-      <body className="font-sans">
+      <body className="bg-background text-foreground font-sans">
         <div className="mx-auto max-w-5xl px-6 sm:px-0">{children}</div>
       </body>
     </html>
