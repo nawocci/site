@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,8 +28,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${spaceMono.variable} antialiased`}
     >
-      <body className="bg-background text-foreground font-sans">
-        <div className="mx-auto max-w-5xl px-6 sm:px-0">{children}</div>
+      <body className="bg-background text-foreground font-sans min-h-screen flex flex-col">
+        <main className="mx-auto max-w-5xl w-full px-6 sm:px-0 flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
