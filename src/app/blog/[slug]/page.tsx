@@ -32,7 +32,7 @@ export default async function BlogPostPage({
   const hasLastModified =
     new Date(lastModifiedDate).toDateString() !== new Date(post._createdAt).toDateString();
   const datePillClass =
-    "inline-flex w-fit self-start whitespace-nowrap rounded-full bg-primary/10 px-3 py-1 font-semibold text-primary";
+    "inline-flex w-fit max-w-full self-start rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary sm:px-3 sm:text-sm";
 
   return (
     <article className="w-full pb-8 sm:pb-10 lg:pb-14 font-mono">
@@ -74,13 +74,13 @@ export default async function BlogPostPage({
 
       <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
         <header className="space-y-4 border-b pb-6">
-          <div className="flex items-center justify-between gap-3 text-sm sm:flex-wrap sm:justify-start">
+          <div className="flex flex-wrap items-center justify-start gap-2 sm:gap-3">
             <p className={datePillClass}>
               {new Date(publishedDate).toLocaleDateString()}
             </p>
             {hasLastModified ? (
               <p className={datePillClass}>
-                Last modified at {new Date(lastModifiedDate).toLocaleDateString()}
+                Updated {new Date(lastModifiedDate).toLocaleDateString()}
               </p>
             ) : null}
           </div>
