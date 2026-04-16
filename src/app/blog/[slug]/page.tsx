@@ -17,6 +17,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
   const freshClient = sanityClient.withConfig({ useCdn: false });
   const post = await freshClient.fetch<BlogPost | null>(postBySlugQuery, { slug });
 
@@ -70,7 +71,7 @@ export default async function BlogPostPage({
         ) : null}
       </div>
 
-      <div className="mx-auto mt-6 sm:mt-8 w-full max-w-3xl space-y-6 sm:space-y-8">
+      <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
         <header className="space-y-4 border-b pb-6">
           <div className="flex items-center justify-between gap-3 text-sm sm:flex-wrap sm:justify-start">
             <p className={datePillClass}>
@@ -82,22 +83,27 @@ export default async function BlogPostPage({
               </p>
             ) : null}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+          <p className="text-center text-xs uppercase tracking-[0.25em] text-foreground/55">
+            Title
+          </p>
+          <h1 className="mx-auto max-w-4xl text-center text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-6xl">
             {post.title}
           </h1>
           {post.excerpt ? (
-            <p className="text-base sm:text-lg leading-7 sm:leading-8 text-foreground/70">
+            <p className="mx-auto max-w-3xl text-center text-base sm:text-lg leading-7 sm:leading-8 text-foreground/70">
               {post.excerpt}
             </p>
           ) : null}
         </header>
 
-        <div className="prose sm:prose-lg prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert">
-          {Array.isArray(post.body) && post.body.length > 0 ? (
-            <PortableText value={post.body as never} />
-          ) : (
-            <p>No content added yet.</p>
-          )}
+        <div className="mx-auto w-full max-w-3xl">
+          <div className="prose sm:prose-lg max-w-none prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert">
+            {Array.isArray(post.body) && post.body.length > 0 ? (
+              <PortableText value={post.body as never} />
+            ) : (
+              <p>No content added yet.</p>
+            )}
+          </div>
         </div>
       </div>
     </article>
