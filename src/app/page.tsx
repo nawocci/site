@@ -1,11 +1,12 @@
 import { FiBarChart2, FiCode, FiCpu, FiDownload, FiGithub, FiSmartphone } from "react-icons/fi";
+import { FaAndroid } from "react-icons/fa";
 
 const heroPills = [
-  { label: "Data Analyst", icon: FiBarChart2 },
+  { label: "Data Analytics", icon: FiBarChart2 },
   { label: "Machine Learning", icon: FiCpu },
   { label: "Frontend", icon: FiCode },
   { label: "Mobile", icon: FiSmartphone },
-  { label: "AOSP Development", icon: FiSmartphone },
+  { label: "AOSP Development", icon: FaAndroid },
 ];
 
 export default function Home() {
