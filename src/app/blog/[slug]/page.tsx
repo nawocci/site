@@ -1,0 +1,104 @@
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { PortableText } from "next-sanity";
+import { FiArrowLeft } from "react-icons/fi";
+
+import { sanityClient } from "@/lib/sanity.client";
+import { postBySlugQuery, type BlogPost } from "@/lib/sanity.queries";
+import { urlForImage } from "@/lib/sanity.image";
+
+export const dynamic = "force-dynamic";
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const freshClient = sanityClient.withConfig({ useCdn: false });
+  const post = await freshClient.fetch<BlogPost | null>(postBySlugQuery, { slug });
+
+  if (!post) {
+    notFound();
+  }
+
+  const heroImageUrl = post.image
+    ? urlForImage(post.image).width(1600).height(900).fit("crop").url()
+    : null;
+  const publishedDate = post.publishedAt || post._createdAt;
+  const lastModifiedDate = post._updatedAt;
+  const hasLastModified =
+    new Date(lastModifiedDate).toDateString() !== new Date(post._createdAt).toDateString();
+
+  return (
+    <article className="mx-auto w-full max-w-5xl pb-8 sm:pb-10 lg:pb-14 font-mono">
+      <div className="space-y-6 sm:space-y-8">
+        <div className="flex items-center justify-between gap-4">
+        <Link
+          href="/blog"
+          aria-label="Back to blog"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 text-foreground transition-colors hover:border-primary hover:text-primary sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
+        >
+          <FiArrowLeft className="h-4 w-4 sm:hidden" />
+          <span className="hidden sm:inline">Back to blog</span>
+        </Link>
+        <p className="text-xs uppercase tracking-[0.3em] text-foreground/50">Article</p>
+      </div>
+
+        {heroImageUrl ? (
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-border bg-border shadow-lg shadow-foreground/15">
+            <Image
+              src={heroImageUrl}
+              alt={post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              priority
+            />
+          </div>
+        ) : null}
+        {!heroImageUrl ? (
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-border bg-[linear-gradient(135deg,var(--background)_0%,color-mix(in_oklab,var(--primary)_18%,transparent)_45%,color-mix(in_oklab,var(--primary)_35%,transparent)_100%)] shadow-lg shadow-foreground/15">
+            <div className="absolute -left-8 top-4 h-24 w-24 sm:top-6 sm:h-32 sm:w-32 rounded-full bg-background/35 blur-2xl" />
+            <div className="absolute right-0 bottom-0 h-28 w-28 sm:h-40 sm:w-40 rounded-full bg-primary/25 blur-3xl" />
+            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 text-xs sm:text-sm font-semibold tracking-wide text-foreground/80">
+              Featured image coming soon
+            </div>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
+        <header className="space-y-4 border-b pb-6 max-w-3xl">
+          <div className="flex items-center justify-between gap-3 text-sm sm:flex-wrap sm:justify-start">
+            <p className="rounded-full bg-primary/10 px-3 py-1 font-semibold text-primary w-fit">
+              {new Date(publishedDate).toLocaleDateString()}
+            </p>
+            {hasLastModified ? (
+              <p className="rounded-full bg-primary/10 px-3 py-1 font-semibold text-primary w-fit">
+                Last modified at {new Date(lastModifiedDate).toLocaleDateString()}
+              </p>
+            ) : null}
+          </div>
+          <h1 className="max-w-3xl text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+            {post.title}
+          </h1>
+          {post.excerpt ? (
+            <p className="max-w-3xl text-base sm:text-lg leading-7 sm:leading-8 text-foreground/70">
+              {post.excerpt}
+            </p>
+          ) : null}
+        </header>
+
+        <div className="prose sm:prose-lg max-w-3xl prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert">
+          {Array.isArray(post.body) && post.body.length > 0 ? (
+            <PortableText value={post.body as never} />
+          ) : (
+            <p>No content added yet.</p>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
