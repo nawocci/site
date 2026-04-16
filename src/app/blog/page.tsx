@@ -4,7 +4,6 @@ import Link from "next/link";
 import { sanityClient } from "@/lib/sanity.client";
 import { postsQuery, type BlogPostPreview } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
-import { datePillClass } from "@/lib/uiStyles";
 
 export const dynamic = "force-dynamic";
 
@@ -50,7 +49,7 @@ export default async function BlogPage() {
                 <div className="flex grow flex-col p-3 sm:p-4 space-y-2 transition-colors duration-200">
                   <time
                     dateTime={post.publishedAt || post._createdAt}
-                    className={`${datePillClass} text-xs sm:text-sm lg:text-base transition-colors duration-200`}
+                    className="inline-flex w-fit self-start whitespace-nowrap rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary transition-colors duration-200 sm:text-sm lg:text-base"
                   >
                     {new Date(post.publishedAt || post._createdAt).toLocaleDateString()}
                   </time>

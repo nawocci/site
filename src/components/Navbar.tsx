@@ -1,20 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiBookOpen, FiMail } from "react-icons/fi";
-import { outlineActionIconClass, outlineActionPillClass } from "@/lib/uiStyles";
 
 const actionPillClasses =
-  `hidden md:inline-flex ${outlineActionPillClass}`;
+  "hidden rounded-full border-2 px-6 py-2.5 text-base font-bold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:inline-flex";
 
 const actionIconClasses =
-  `${outlineActionIconClass} md:hidden`;
+  "inline-flex h-10 w-10 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:hidden";
 
 export default function Navbar() {
   return (
     <nav className="w-full border-b border-border py-6 font-mono sm:border-b-0 sm:py-10">
       <div className="flex items-center justify-between gap-3 sm:gap-4">
         <Link href="/" className="group flex min-w-0 flex-1 items-center gap-2 sm:gap-4 cursor-pointer">
-          <div className="relative h-10 w-10 overflow-hidden rounded-full border-2 transition-transform group-hover:scale-110 sm:h-12 sm:w-12">
+          <div className="relative h-10 w-10 overflow-hidden rounded-full border-2 transition-transform duration-200 group-hover:scale-110 sm:h-12 sm:w-12">
             <Image
               src="https://avatars.githubusercontent.com/nawocci"
               alt="Naufal Altaf"

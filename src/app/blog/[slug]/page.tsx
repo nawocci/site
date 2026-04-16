@@ -7,7 +7,6 @@ import { FiArrowLeft } from "react-icons/fi";
 import { sanityClient } from "@/lib/sanity.client";
 import { postBySlugQuery, type BlogPost } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
-import { datePillClass, outlineActionIconClass } from "@/lib/uiStyles";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +31,10 @@ export default async function BlogPostPage({
   const lastModifiedDate = post._updatedAt;
   const hasLastModified =
     new Date(lastModifiedDate).toDateString() !== new Date(post._createdAt).toDateString();
+  const datePillClass =
+    "inline-flex w-fit self-start whitespace-nowrap rounded-full bg-primary/10 px-3 py-1 font-semibold text-primary";
+  const outlineActionIconClass =
+    "inline-flex h-10 w-10 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 hover:border-primary hover:text-primary";
 
   return (
     <article className="w-full pb-8 sm:pb-10 lg:pb-14 font-mono">
