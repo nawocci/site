@@ -54,7 +54,7 @@ export default function Home() {
                 href="https://github.com/nawocci?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
               >
                 View Projects
                 <FiGithub className="h-4 w-4" />
