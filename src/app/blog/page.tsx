@@ -4,6 +4,7 @@ import Link from "next/link";
 import { sanityClient } from "@/lib/sanity.client";
 import { postsQuery, type BlogPostPreview } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
+import { datePillClass } from "@/lib/uiStyles";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +15,7 @@ export default async function BlogPage() {
   return (
     <main className="w-full space-y-5 sm:space-y-6 lg:space-y-10 font-mono">
       <header className="space-y-2">
-        <h1 className="text-2xl sm:text-3xl lg:text-6xl font-bold text-foreground">Blog</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-6xl font-bold tracking-tight text-foreground">Blog</h1>
         <p className="text-sm sm:text-base text-foreground/65">Latest posts from the studio.</p>
       </header>
 
@@ -49,15 +50,15 @@ export default async function BlogPage() {
                 <div className="flex grow flex-col p-3 sm:p-4 space-y-2 transition-colors duration-200">
                   <time
                     dateTime={post.publishedAt || post._createdAt}
-                    className="inline-flex w-fit self-start whitespace-nowrap rounded-full bg-primary/10 px-3 py-1 text-xs sm:text-sm lg:text-base font-semibold text-primary transition-colors duration-200"
+                    className={`${datePillClass} text-xs sm:text-sm lg:text-base transition-colors duration-200`}
                   >
                     {new Date(post.publishedAt || post._createdAt).toLocaleDateString()}
                   </time>
-                  <h2 className="font-bold text-lg sm:text-xl lg:text-2xl text-foreground transition-colors duration-200 group-hover:text-primary">
+                  <h2 className="font-bold text-lg sm:text-xl lg:text-2xl tracking-tight text-foreground transition-colors duration-200 group-hover:text-primary">
                     {post.title}
                   </h2>
                   {post.excerpt ? (
-                    <p className="text-xs sm:text-sm text-foreground/75 transition-colors duration-200 group-hover:text-foreground line-clamp-2">
+                    <p className="text-xs sm:text-sm leading-relaxed text-foreground/75 transition-colors duration-200 group-hover:text-foreground line-clamp-2">
                       {post.excerpt}
                     </p>
                   ) : null}

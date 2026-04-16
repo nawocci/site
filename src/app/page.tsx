@@ -18,7 +18,7 @@ export default function Home() {
 
             <div className="rounded-2xl border border-border bg-background p-4 sm:p-8">
               <p className="text-xs text-foreground/60">title:</p>
-              <h1 className="mt-2 text-2xl font-bold leading-[0.95] sm:text-6xl md:text-7xl">
+              <h1 className="mt-2 text-2xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl">
                 Developer &amp; Analyst
               </h1>
 
@@ -53,7 +53,7 @@ export default function Home() {
                 href="https://github.com/nawocci?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
               >
                 View Projects
                 <FiGithub className="h-4 w-4" />

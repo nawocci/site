@@ -8,7 +8,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="w-full py-6 font-mono text-center text-xs sm:py-8 sm:text-sm">
+    <footer className="w-full py-6 font-mono text-center text-xs text-foreground/70 sm:py-8 sm:text-sm">
       <p>&copy; {new Date().getFullYear()} Naufal Altaf.</p>
       <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-y-0">
         {socialLinks.map((link) => (
@@ -17,7 +17,7 @@ export default function Footer() {
             href={link.href}
             target={link.isExternal ? "_blank" : undefined}
             rel={link.isExternal ? "noopener noreferrer" : undefined}
-            className="hover:text-primary hover:underline"
+            className="transition-colors hover:text-primary hover:underline"
           >
             {link.label}
           </a>

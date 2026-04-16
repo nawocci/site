@@ -7,6 +7,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import { sanityClient } from "@/lib/sanity.client";
 import { postBySlugQuery, type BlogPost } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
+import { datePillClass, outlineActionIconClass } from "@/lib/uiStyles";
 
 export const dynamic = "force-dynamic";
 
@@ -32,19 +33,19 @@ export default async function BlogPostPage({
     new Date(lastModifiedDate).toDateString() !== new Date(post._createdAt).toDateString();
 
   return (
-    <article className="mx-auto w-full max-w-5xl pb-8 sm:pb-10 lg:pb-14 font-mono">
+    <article className="w-full pb-8 sm:pb-10 lg:pb-14 font-mono">
       <div className="space-y-6 sm:space-y-8">
         <div className="flex items-center justify-between gap-4">
-        <Link
-          href="/blog"
-          aria-label="Back to blog"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 text-foreground transition-colors hover:border-primary hover:text-primary sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
-        >
-          <FiArrowLeft className="h-4 w-4 sm:hidden" />
-          <span className="hidden sm:inline">Back to blog</span>
-        </Link>
-        <p className="text-xs uppercase tracking-[0.3em] text-foreground/50">Article</p>
-      </div>
+          <Link
+            href="/blog"
+            aria-label="Back to blog"
+            className={`${outlineActionIconClass} sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-sm`}
+          >
+            <FiArrowLeft className="h-4 w-4 sm:hidden" />
+            <span className="hidden sm:inline">Back to blog</span>
+          </Link>
+          <p className="text-xs uppercase tracking-[0.3em] text-foreground/50">Article</p>
+        </div>
 
         {heroImageUrl ? (
           <div className="relative aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-border bg-border shadow-lg shadow-foreground/15">
@@ -59,7 +60,7 @@ export default async function BlogPostPage({
           </div>
         ) : null}
         {!heroImageUrl ? (
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-border bg-[linear-gradient(135deg,var(--background)_0%,color-mix(in_oklab,var(--primary)_18%,transparent)_45%,color-mix(in_oklab,var(--primary)_35%,transparent)_100%)] shadow-lg shadow-foreground/15">
+          <div className="hero-fallback-gradient relative aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-border shadow-lg shadow-foreground/15">
             <div className="absolute -left-8 top-4 h-24 w-24 sm:top-6 sm:h-32 sm:w-32 rounded-full bg-background/35 blur-2xl" />
             <div className="absolute right-0 bottom-0 h-28 w-28 sm:h-40 sm:w-40 rounded-full bg-primary/25 blur-3xl" />
             <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 text-xs sm:text-sm font-semibold tracking-wide text-foreground/80">
@@ -69,29 +70,29 @@ export default async function BlogPostPage({
         ) : null}
       </div>
 
-      <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
-        <header className="space-y-4 border-b pb-6 max-w-3xl">
+      <div className="mx-auto mt-6 sm:mt-8 w-full max-w-3xl space-y-6 sm:space-y-8">
+        <header className="space-y-4 border-b pb-6">
           <div className="flex items-center justify-between gap-3 text-sm sm:flex-wrap sm:justify-start">
-            <p className="rounded-full bg-primary/10 px-3 py-1 font-semibold text-primary w-fit">
+            <p className={datePillClass}>
               {new Date(publishedDate).toLocaleDateString()}
             </p>
             {hasLastModified ? (
-              <p className="rounded-full bg-primary/10 px-3 py-1 font-semibold text-primary w-fit">
+              <p className={datePillClass}>
                 Last modified at {new Date(lastModifiedDate).toLocaleDateString()}
               </p>
             ) : null}
           </div>
-          <h1 className="max-w-3xl text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-6xl">
             {post.title}
           </h1>
           {post.excerpt ? (
-            <p className="max-w-3xl text-base sm:text-lg leading-7 sm:leading-8 text-foreground/70">
+            <p className="text-base sm:text-lg leading-7 sm:leading-8 text-foreground/70">
               {post.excerpt}
             </p>
           ) : null}
         </header>
 
-        <div className="prose sm:prose-lg max-w-3xl prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert">
+        <div className="prose sm:prose-lg prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert">
           {Array.isArray(post.body) && post.body.length > 0 ? (
             <PortableText value={post.body as never} />
           ) : (
