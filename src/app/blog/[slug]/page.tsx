@@ -33,8 +33,6 @@ export default async function BlogPostPage({
     new Date(lastModifiedDate).toDateString() !== new Date(post._createdAt).toDateString();
   const datePillClass =
     "inline-flex w-fit self-start whitespace-nowrap rounded-full bg-primary/10 px-3 py-1 font-semibold text-primary";
-  const outlineActionIconClass =
-    "inline-flex h-10 w-10 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 hover:border-primary hover:text-primary";
 
   return (
     <article className="w-full pb-8 sm:pb-10 lg:pb-14 font-mono">
@@ -43,7 +41,7 @@ export default async function BlogPostPage({
           <Link
             href="/blog"
             aria-label="Back to blog"
-            className={`${outlineActionIconClass} sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-sm`}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 hover:border-primary hover:text-primary sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
           >
             <FiArrowLeft className="h-4 w-4 sm:hidden" />
             <span className="hidden sm:inline">Back to blog</span>
