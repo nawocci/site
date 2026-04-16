@@ -10,7 +10,7 @@ const actionIconClasses =
 
 export default function Navbar() {
   return (
-    <nav className="-mx-4 border-b border-border px-4 py-6 font-mono sm:mx-0 sm:border-b-0 sm:px-0 sm:py-10">
+    <nav className="-mx-4 border-b border-border px-6 py-6 font-mono sm:mx-0 sm:border-b-0 sm:px-0 sm:py-10">
       <div className="flex items-center justify-between gap-3 sm:gap-4">
         <Link href="/" className="group flex min-w-0 flex-1 items-center gap-2 sm:gap-4 cursor-pointer">
           <div className="relative h-10 w-10 overflow-hidden rounded-full border-2 transition-transform group-hover:scale-110 sm:h-12 sm:w-12">
