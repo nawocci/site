@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FiBookOpen, FiMail } from "react-icons/fi";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -10,6 +11,8 @@ const mobileActionIconClasses =
 
 export default function MobileActionBar() {
   const [isVisible, setIsVisible] = useState(true);
+  const pathname = usePathname();
+  const isBlogRoute = pathname.startsWith("/blog");
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -55,7 +58,12 @@ export default function MobileActionBar() {
     >
       <div className="motion-fade-up motion-delay-1 flex items-center gap-3 rounded-full border-2 border-border bg-background/95 px-3 py-2 shadow-lg backdrop-blur">
         <ThemeToggle />
-        <Link href="/blog" aria-label="Blog" className={mobileActionIconClasses}>
+        <Link
+          href="/blog"
+          aria-label="Blog"
+          aria-current={isBlogRoute ? "page" : undefined}
+          className={`${mobileActionIconClasses} ${isBlogRoute ? "border-primary text-primary" : ""}`}
+        >
           <FiBookOpen className="h-4 w-4" />
         </Link>
         <a href="mailto:naufal@altaf.xyz" aria-label="Contact" className={mobileActionIconClasses}>

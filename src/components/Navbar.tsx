@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 import MobileActionBar from "@/components/MobileActionBar";
 
@@ -7,6 +10,9 @@ const actionPillClasses =
   "hidden rounded-full border-2 px-6 py-2.5 text-base font-bold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:inline-flex";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isBlogRoute = pathname.startsWith("/blog");
+
   return (
     <>
       <nav className="w-full border-b border-border py-4 font-mono sm:border-b-0 sm:py-10">
@@ -30,7 +36,11 @@ export default function Navbar() {
 
         <div className="ml-2 hidden shrink-0 items-center gap-4 sm:gap-6 md:flex">
           <ThemeToggle />
-          <Link href="/blog" className={actionPillClasses}>
+          <Link
+            href="/blog"
+            className={`${actionPillClasses} ${isBlogRoute ? "border-primary text-primary" : ""}`}
+            aria-current={isBlogRoute ? "page" : undefined}
+          >
             blog
           </Link>
           <a href="mailto:naufal@altaf.xyz" className={actionPillClasses}>
