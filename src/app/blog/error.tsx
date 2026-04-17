@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { UI_BUTTON_CLASSNAMES } from "@/lib/ui.classes";
 
 export default function BlogError({
   error,
@@ -23,7 +24,7 @@ export default function BlogError({
       <button
         type="button"
         onClick={() => unstable_retry()}
-        className="inline-flex rounded-full border-2 border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary"
+        className={UI_BUTTON_CLASSNAMES.secondaryBorder}
       >
         Retry
       </button>

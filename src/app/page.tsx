@@ -1,5 +1,6 @@
 import { FiBarChart2, FiCode, FiCpu, FiDownload, FiGithub, FiSmartphone } from "react-icons/fi";
 import { FaAndroid } from "react-icons/fa";
+import { UI_BUTTON_CLASSNAMES } from "@/lib/ui.classes";
 
 const heroPills = [
   { label: "Data Analytics", icon: FiBarChart2 },
@@ -59,7 +60,7 @@ export default function Home() {
                 href="https://github.com/nawocci?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-semibold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary"
+                className={UI_BUTTON_CLASSNAMES.secondary}
               >
                 View Projects
                 <FiGithub className="h-4 w-4" />
