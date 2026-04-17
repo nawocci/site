@@ -1,4 +1,5 @@
 import InlineImageLightbox from "./InlineImageLightbox";
+import CodeBlock from "./CodeBlock";
 
 type PortableTextImageValue = {
   _type: "image";
@@ -13,6 +14,13 @@ type PortableTextImageValue = {
       };
     };
   };
+};
+
+type PortableTextCodeBlockValue = {
+  _type: "code_block";
+  language?: string | null;
+  code?: string | null;
+  filename?: string | null;
 };
 
 export const portableTextComponents = {
@@ -30,6 +38,9 @@ export const portableTextComponents = {
       return (
         <InlineImageLightbox src={src} alt={alt} width={width} height={height} caption={value.caption} />
       );
+    },
+    code_block: ({ value }: { value: PortableTextCodeBlockValue }) => {
+      return <CodeBlock language={value.language} code={value.code} filename={value.filename} />;
     },
   },
 };

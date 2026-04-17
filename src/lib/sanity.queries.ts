@@ -29,6 +29,13 @@ export type PortableTextImage = {
   asset?: SanityImageAssetWithMetadata;
 };
 
+export type PortableTextCodeBlock = {
+  _type: "code_block";
+  language?: string | null;
+  code?: string | null;
+  filename?: string | null;
+};
+
 export type BlogPostPreview = {
   _id: string;
   _createdAt: string;
@@ -41,7 +48,7 @@ export type BlogPostPreview = {
 };
 
 export type BlogPost = BlogPostPreview & {
-  body?: Array<unknown | PortableTextImage>;
+  body?: Array<unknown | PortableTextImage | PortableTextCodeBlock>;
 };
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
