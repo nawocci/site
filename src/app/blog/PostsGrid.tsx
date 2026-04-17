@@ -46,7 +46,7 @@ export async function PostsGrid() {
 export function PostsGridSkeleton() {
   return (
     <ul className={`${POSTS_GRID_CLASS} motion-fade-up motion-delay-1`}>
-      {Array.from({ length: 6 }).map((_, index) => (
+      {Array.from({ length: 3 }).map((_, index) => (
         <li
           key={index}
           className="rounded-xl sm:rounded-2xl border-2 border-border overflow-hidden bg-background motion-card-in"

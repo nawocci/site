@@ -27,11 +27,12 @@ export default function BlogPostCard({
 }: BlogPostCardProps) {
   const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
   const isImageReady = !imageUrl || loadedSrc === imageUrl;
+  const cardClassName = isImageReady ? "relative motion-card-in" : "relative";
   const shouldEagerLoad = index < 3;
   const shouldPreload = index === 0;
 
   return (
-    <li className="relative motion-card-in" style={{ animationDelay: `${index * 75}ms` }}>
+    <li className={cardClassName} style={{ animationDelay: `${index * 75}ms` }}>
       <Link
         href={`/blog/${slug}`}
         className="group flex flex-col rounded-xl sm:rounded-2xl border-2 border-border overflow-hidden bg-background transition-all duration-200 hover:-translate-y-0.5 hover:border-primary"
