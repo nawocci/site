@@ -15,11 +15,16 @@ export default function Home() {
       <div className="flex w-full min-h-[calc(100svh-12rem)] items-center sm:block sm:min-h-0">
         <section className="relative w-full overflow-hidden rounded-3xl border border-border bg-background p-5 font-mono sm:p-8 motion-scale-in">
           <div className="space-y-6 sm:space-y-8">
-            <p className="motion-fade-up text-xs uppercase tracking-[0.2em] text-foreground/60">profile.md</p>
+            <p className="motion-fade-up text-xs uppercase text-foreground/60" style={{ letterSpacing: "0.2em" }}>
+              profile.md
+            </p>
 
             <div className="rounded-2xl border border-border bg-background p-5 sm:p-8 motion-fade-up motion-delay-1">
               <p className="text-xs text-foreground/60">title:</p>
-              <h1 className="mt-2 text-2xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl motion-fade-up motion-delay-2">
+              <h1
+                className="mt-2 text-2xl font-bold tracking-tight sm:text-6xl md:text-7xl motion-fade-up motion-delay-2"
+                style={{ lineHeight: 0.95 }}
+              >
                 Developer &amp; Analyst
               </h1>
 

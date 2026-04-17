@@ -133,9 +133,12 @@ export default function InlineImageLightbox({
           aria-modal="true"
           aria-label={alt}
         >
-          <p className={`pointer-events-none absolute left-1/2 top-4 rounded-full border bg-background px-3 py-1 font-mono text-[11px] uppercase font-semibold text-foreground shadow-md shadow-black/20 sm:top-6 sm:text-xs ${
-            isVisible ? "motion-modal-hint-in" : "motion-modal-hint-out"
-          }`}>
+          <p
+            className={`pointer-events-none absolute left-1/2 top-4 rounded-full border bg-background px-3 py-1 font-mono uppercase font-semibold text-foreground shadow-md shadow-black/20 sm:top-6 sm:text-xs ${
+              isVisible ? "motion-modal-hint-in" : "motion-modal-hint-out"
+            }`}
+            style={{ fontSize: "11px" }}
+          >
             Click outside or press Esc to close
           </p>
 

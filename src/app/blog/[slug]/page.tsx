@@ -95,7 +95,9 @@ async function BlogPostContent({
             <FiArrowLeft className="h-4 w-4 sm:hidden" />
             <span className="hidden sm:inline">Back to blog</span>
           </Link>
-          <p className="text-xs uppercase tracking-[0.3em] text-foreground/50">Article</p>
+          <p className="text-xs uppercase text-foreground/50" style={{ letterSpacing: "0.3em" }}>
+            Article
+          </p>
         </div>
 
         {heroImageUrl ? (
@@ -133,7 +135,10 @@ async function BlogPostContent({
               </p>
             ) : null}
           </div>
-          <p className="text-center text-xs uppercase tracking-[0.25em] text-foreground/55 motion-fade-up motion-delay-2">
+          <p
+            className="text-center text-xs uppercase text-foreground/55 motion-fade-up motion-delay-2"
+            style={{ letterSpacing: "0.25em" }}
+          >
             Title
           </p>
           <h1 className="mx-auto max-w-4xl text-center text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-6xl motion-fade-up motion-delay-2">
