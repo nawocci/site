@@ -2,17 +2,18 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { FiBookOpen, FiMail } from "react-icons/fi";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const mobileActionIconClasses =
   "inline-flex h-11 w-11 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 hover:border-primary hover:text-primary";
 
-export default function MobileActionBar() {
+type MobileActionBarProps = {
+  isBlogRoute: boolean;
+};
+
+export default function MobileActionBar({ isBlogRoute }: MobileActionBarProps) {
   const [isVisible, setIsVisible] = useState(true);
-  const pathname = usePathname();
-  const isBlogRoute = pathname.startsWith("/blog");
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
