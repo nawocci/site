@@ -88,7 +88,7 @@ async function BlogPostContent({
         <header className="space-y-4 border-b pb-6 motion-fade-up motion-delay-1">
           <div className="flex flex-wrap items-center justify-start gap-2 sm:gap-3">
             <p className={datePillClass}>
-              {new Date(publishedDate).toLocaleDateString()}
+              Published {new Date(publishedDate).toLocaleDateString()}
             </p>
             {hasLastModified ? (
               <p className={datePillClass}>
