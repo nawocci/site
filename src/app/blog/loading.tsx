@@ -1,10 +1,6 @@
-import { Suspense } from "react";
+import { PostsGridSkeleton } from "./PostsGrid";
 
-import { PostsGrid, PostsGridSkeleton } from "./PostsGrid";
-
-export const unstable_instant = { prefetch: "static" };
-
-export default function BlogPage() {
+export default function BlogLoading() {
   return (
     <main className="w-full space-y-5 sm:space-y-6 lg:space-y-10 font-mono">
       <header className="space-y-2">
@@ -12,9 +8,7 @@ export default function BlogPage() {
         <p className="text-sm sm:text-base text-foreground/65">Latest posts from the studio.</p>
       </header>
 
-      <Suspense fallback={<PostsGridSkeleton />}>
-        <PostsGrid />
-      </Suspense>
+      <PostsGridSkeleton />
     </main>
   );
 }

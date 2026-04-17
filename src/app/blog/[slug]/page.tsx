@@ -1,16 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { PortableText } from "next-sanity";
 import { FiArrowLeft } from "react-icons/fi";
 
 import { sanityClient } from "@/lib/sanity.client";
 import { postBySlugQuery, type BlogPost } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
+import BlogPostLoading from "./loading";
 
-export const dynamic = "force-dynamic";
+export default function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  return (
+    <Suspense fallback={<BlogPostLoading />}>
+      <BlogPostContent params={params} />
+    </Suspense>
+  );
+}
 
-export default async function BlogPostPage({
+async function BlogPostContent({
   params,
 }: {
   params: Promise<{ slug: string }>;

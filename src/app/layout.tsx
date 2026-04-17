@@ -3,7 +3,6 @@ import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import RouteTransition from "@/components/RouteTransition";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,7 +33,7 @@ export default function RootLayout({
         <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-3 sm:px-6 lg:px-8">
           <Navbar />
           <main className="flex-1 py-4 sm:py-6">
-            <RouteTransition>{children}</RouteTransition>
+            {children}
           </main>
           <Footer />
         </div>

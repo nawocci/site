@@ -7,9 +7,11 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const currentYear = process.env.NEXT_PUBLIC_COPYRIGHT_YEAR ?? "2026";
+
   return (
     <footer className="w-full py-6 font-mono text-center text-xs text-foreground/70 sm:py-8 sm:text-sm">
-      <p>&copy; {new Date().getFullYear()} Naufal Altaf.</p>
+      <p>&copy; {currentYear} Naufal Altaf.</p>
       <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-y-0">
         {socialLinks.map((link) => (
           <a

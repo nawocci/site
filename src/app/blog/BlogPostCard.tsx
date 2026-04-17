@@ -27,6 +27,8 @@ export default function BlogPostCard({
 }: BlogPostCardProps) {
   const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
   const isImageReady = !imageUrl || loadedSrc === imageUrl;
+  const shouldEagerLoad = index < 3;
+  const shouldPreload = index === 0;
 
   return (
     <li className="relative motion-card-in" style={{ animationDelay: `${index * 75}ms` }}>
@@ -40,8 +42,8 @@ export default function BlogPostCard({
               src={imageUrl}
               alt={title}
               fill
-              loading={index === 0 ? "eager" : "lazy"}
-              priority={index === 0}
+              loading={shouldEagerLoad ? "eager" : "lazy"}
+              priority={shouldPreload}
               onLoad={() => setLoadedSrc(imageUrl)}
               onError={() => setLoadedSrc(imageUrl)}
               className="object-cover h-full w-full transition-transform duration-200 group-hover:scale-110"
