@@ -2,10 +2,31 @@ import groq from "groq";
 
 export type SanityImage = {
   _type: "image";
+  alt?: string | null;
+  caption?: string | null;
   asset?: {
     _ref: string;
     _type: "reference";
   };
+};
+
+type SanityImageAssetWithMetadata = {
+  _id: string;
+  url?: string;
+  metadata?: {
+    dimensions?: {
+      width?: number;
+      height?: number;
+      aspectRatio?: number;
+    };
+  };
+};
+
+export type PortableTextImage = {
+  _type: "image";
+  alt?: string | null;
+  caption?: string | null;
+  asset?: SanityImageAssetWithMetadata;
 };
 
 export type BlogPostPreview = {
@@ -20,7 +41,7 @@ export type BlogPostPreview = {
 };
 
 export type BlogPost = BlogPostPreview & {
-  body?: unknown[];
+  body?: Array<unknown | PortableTextImage>;
 };
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
@@ -43,5 +64,23 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
   publishedAt,
   excerpt,
   image,
-  body
+  body[]{
+    ...,
+    _type == "image" => {
+      ...,
+      alt,
+      caption,
+      asset->{
+        _id,
+        url,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      }
+    }
+  }
 }`;

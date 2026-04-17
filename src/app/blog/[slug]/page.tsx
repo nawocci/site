@@ -8,7 +8,44 @@ import { FiArrowLeft } from "react-icons/fi";
 import { sanityClient } from "@/lib/sanity.client";
 import { postBySlugQuery, type BlogPost } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
+import InlineImageLightbox from "./InlineImageLightbox";
 import BlogPostLoading from "./loading";
+
+const HERO_IMAGE_ALT = "Featured blog image";
+
+type PortableTextImageValue = {
+  _type: "image";
+  alt?: string | null;
+  caption?: string | null;
+  asset?: {
+    url?: string;
+    metadata?: {
+      dimensions?: {
+        width?: number;
+        height?: number;
+      };
+    };
+  };
+};
+
+const portableTextComponents = {
+  types: {
+    image: ({ value }: { value: PortableTextImageValue }) => {
+      const src = value?.asset?.url;
+      if (!src) {
+        return null;
+      }
+
+      const width = value.asset?.metadata?.dimensions?.width ?? 1600;
+      const height = value.asset?.metadata?.dimensions?.height ?? 900;
+      const alt = value.alt?.trim() || "Inline article image";
+
+      return (
+        <InlineImageLightbox src={src} alt={alt} width={width} height={height} caption={value.caption} />
+      );
+    },
+  },
+};
 
 export default function BlogPostPage({
   params,
@@ -65,7 +102,7 @@ async function BlogPostContent({
           <div className="relative aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-border bg-border shadow-lg shadow-foreground/15">
             <Image
               src={heroImageUrl}
-              alt={post.title}
+              alt={HERO_IMAGE_ALT}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 1024px"
@@ -112,7 +149,7 @@ async function BlogPostContent({
         <div className="mx-auto w-full max-w-3xl">
           <div className="prose sm:prose-lg max-w-none prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert motion-fade-up motion-delay-3">
             {Array.isArray(post.body) && post.body.length > 0 ? (
-              <PortableText value={post.body as never} />
+              <PortableText value={post.body as never} components={portableTextComponents} />
             ) : (
               <p>No content added yet.</p>
             )}
