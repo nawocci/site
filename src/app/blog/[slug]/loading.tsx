@@ -3,7 +3,7 @@ export default function BlogPostLoading() {
     <article className="w-full pb-8 sm:pb-10 lg:pb-14 font-mono motion-fade-up">
       <div className="space-y-6 sm:space-y-8">
         <div className="flex items-center justify-between gap-4 motion-fade-up">
-          <div className="h-10 w-10 rounded-full border-2 border-border animate-pulse sm:h-9 sm:w-9" />
+          <div className="h-11 w-11 rounded-full border-2 border-border animate-pulse sm:h-11 sm:w-11" />
           <div className="h-3 w-16 rounded bg-border animate-pulse" />
         </div>
 

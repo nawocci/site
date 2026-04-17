@@ -6,7 +6,7 @@ const actionPillClasses =
   "hidden rounded-full border-2 px-6 py-2.5 text-base font-bold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:inline-flex";
 
 const actionIconClasses =
-  "inline-flex h-9 w-9 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:hidden";
+  "inline-flex h-11 w-11 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:hidden";
 
 export default function Navbar() {
   return (
