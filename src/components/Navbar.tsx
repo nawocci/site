@@ -20,6 +20,7 @@ export default function Navbar() {
               fill
               sizes="(min-width: 640px) 48px, 40px"
               className="object-cover"
+              priority
             />
           </div>
           <div className="flex min-w-0 items-baseline gap-1">

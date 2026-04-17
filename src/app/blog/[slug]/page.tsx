@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -10,6 +9,7 @@ import { postBySlugQuery, type BlogPost } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
 import { UI_BUTTON_CLASSNAMES } from "@/lib/ui.classes";
 import BlogPostLoading from "./loading";
+import HeroImage from "./HeroImage";
 import { portableTextComponents } from "./portableText.components";
 
 const HERO_IMAGE_ALT = "Featured blog image";
@@ -31,18 +31,7 @@ type ArticleMetaHeaderProps = {
 
 function HeroMedia({ heroImageUrl }: { heroImageUrl: string | null }) {
   if (heroImageUrl) {
-    return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-border bg-border shadow-lg shadow-foreground/15 sm:rounded-3xl">
-        <Image
-          src={heroImageUrl}
-          alt={HERO_IMAGE_ALT}
-          fill
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 1024px"
-          priority
-        />
-      </div>
-    );
+    return <HeroImage src={heroImageUrl} alt={HERO_IMAGE_ALT} />;
   }
 
   return (
@@ -114,7 +103,7 @@ async function BlogPostContent({
   }
 
   const heroImageUrl = post.image
-    ? urlForImage(post.image).width(1600).height(900).fit("crop").url()
+    ? urlForImage(post.image, { width: 1600, height: 900, fit: "crop", quality: 76 }).url()
     : null;
   const publishedDate = post.publishedAt || post._createdAt;
   const lastModifiedDate = post._updatedAt;

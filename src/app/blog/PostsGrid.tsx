@@ -30,7 +30,11 @@ export async function PostsGrid() {
             dateTime={dateTime}
             displayDate={formatPostDate(dateTime)}
             excerpt={post.excerpt}
-            imageUrl={post.image ? urlForImage(post.image).width(960).height(720).fit("crop").url() : undefined}
+            imageUrl={
+              post.image
+                ? urlForImage(post.image, { width: 960, height: 720, fit: "crop", quality: 72 }).url()
+                : undefined
+            }
             index={index}
           />
         );

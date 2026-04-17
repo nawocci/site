@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 type ImageLightboxModalProps = {
@@ -22,6 +22,13 @@ export default function ImageLightboxModal({
   onRequestClose,
 }: ImageLightboxModalProps) {
   const canUseDOM = typeof document !== "undefined";
+  const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
+  const isImageReady = loadedSrc === src;
+  const frameAspectRatio = `${width} / ${height}`;
+  const frameWidth = `min(calc(100vw - 2rem), calc((100vh - 9rem) * ${width} / ${height}))`;
+  const modalImageClass = `m-0 rounded-2xl shadow-xl shadow-black/35 transition-opacity duration-200 ${
+    isImageReady ? "opacity-100" : "opacity-0"
+  }`;
 
   useEffect(() => {
     if (!canUseDOM) {
@@ -68,19 +75,32 @@ export default function ImageLightboxModal({
       </p>
 
       <div
-        className={`relative flex items-center justify-center ${
+        className={`relative flex items-center justify-center overflow-hidden rounded-2xl bg-border/40 ${
           isVisible ? "motion-modal-in" : "motion-modal-out"
         }`}
+        style={{ aspectRatio: frameAspectRatio, width: frameWidth }}
         onClick={(event) => event.stopPropagation()}
+        aria-busy={!isImageReady}
       >
+        {!isImageReady ? (
+          <div className="pointer-events-none absolute inset-0 flex min-h-52 min-w-52 items-center justify-center rounded-2xl border border-border bg-border/80 px-4">
+            <div className="w-full max-w-sm space-y-3">
+              <div className="h-6 w-1/3 rounded-full bg-background/60 animate-pulse" />
+              <div className="h-4 w-full rounded bg-background/60 animate-pulse" />
+              <div className="h-4 w-4/5 rounded bg-background/60 animate-pulse" />
+            </div>
+          </div>
+        ) : null}
+
         <Image
           src={src}
           alt={alt}
-          width={width}
-          height={height}
-          className="m-0 block h-auto w-auto max-h-[calc(100vh-6rem)] max-w-[calc(100vw-2rem)] rounded-2xl shadow-xl shadow-black/35 sm:max-h-[calc(100vh-7rem)] sm:max-w-[calc(100vw-3rem)]"
+          fill
+          className={`${modalImageClass} object-contain`}
           sizes="(max-width: 640px) calc(100vw - 2rem), calc(100vw - 3rem)"
           priority
+          onLoad={() => setLoadedSrc(src)}
+          onError={() => setLoadedSrc(src)}
         />
       </div>
     </div>,

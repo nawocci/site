@@ -5,7 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import ImageLightboxModal from "./ImageLightboxModal";
 
 type InlineImageLightboxProps = {
-  src: string;
+  previewSrc: string;
+  modalSrc: string;
   alt: string;
   width: number;
   height: number;
@@ -13,7 +14,8 @@ type InlineImageLightboxProps = {
 };
 
 export default function InlineImageLightbox({
-  src,
+  previewSrc,
+  modalSrc,
   alt,
   width,
   height,
@@ -21,6 +23,7 @@ export default function InlineImageLightbox({
 }: InlineImageLightboxProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isPreviewLoaded, setIsPreviewLoaded] = useState(false);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const MODAL_ANIMATION_MS = 200;
   const isPortrait = height > width;
@@ -60,16 +63,19 @@ export default function InlineImageLightbox({
   return (
     <figure className={`not-prose ${frameClass}`}>
       <div className="md:hidden">
-        <span className="block overflow-hidden rounded-2xl border-2 border-border shadow-md shadow-foreground/10">
+        <span className="relative block overflow-hidden rounded-2xl border-2 border-border shadow-md shadow-foreground/10">
           <Image
-            src={src}
+            src={previewSrc}
             alt={alt}
             width={width}
             height={height}
             className="m-0 block h-auto w-full object-cover"
             sizes={isPortrait ? "(max-width: 640px) 80vw, 420px" : "(max-width: 768px) 100vw, 768px"}
             loading="lazy"
+            onLoad={() => setIsPreviewLoaded(true)}
+            onError={() => setIsPreviewLoaded(true)}
           />
+          {!isPreviewLoaded ? <span className="pointer-events-none absolute inset-0 bg-border animate-pulse" /> : null}
         </span>
       </div>
 
@@ -80,16 +86,19 @@ export default function InlineImageLightbox({
         aria-label="Open image dialog"
         aria-expanded={isMounted}
       >
-        <span className="block overflow-hidden rounded-2xl border-2 border-border shadow-md shadow-foreground/10 transition-transform duration-200 group-hover:scale-[1.01]">
+        <span className="relative block overflow-hidden rounded-2xl border-2 border-border shadow-md shadow-foreground/10 transition-transform duration-200 group-hover:scale-[1.01]">
           <Image
-            src={src}
+            src={previewSrc}
             alt={alt}
             width={width}
             height={height}
             className="m-0 block h-auto w-full object-cover"
             sizes={isPortrait ? "(max-width: 640px) 80vw, 420px" : "(max-width: 768px) 100vw, 768px"}
             loading="lazy"
+            onLoad={() => setIsPreviewLoaded(true)}
+            onError={() => setIsPreviewLoaded(true)}
           />
+          {!isPreviewLoaded ? <span className="pointer-events-none absolute inset-0 bg-border animate-pulse" /> : null}
         </span>
       </button>
       {caption ? (
@@ -99,7 +108,7 @@ export default function InlineImageLightbox({
       {isMounted ? (
         <ImageLightboxModal
           isVisible={isVisible}
-          src={src}
+          src={modalSrc}
           alt={alt}
           width={width}
           height={height}
