@@ -101,7 +101,7 @@ export default function ThemeToggle() {
       ) : (
         <FiMoon className="h-4 w-4" />
       )}
-      <span className="hidden md:inline">{isInitializing ? "theme" : isDark ? "light" : "dark"}</span>
+      <span className="hidden w-14 text-center md:inline">{isInitializing ? "theme" : isDark ? "light" : "dark"}</span>
     </button>
   );
 }
