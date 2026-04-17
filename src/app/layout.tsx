@@ -24,11 +24,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const themeBootstrapScript = `(function(){try{var key='theme';var stored=localStorage.getItem(key);var root=document.documentElement;var system=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(stored==='light'||stored==='dark'){root.setAttribute('data-theme',stored);root.style.colorScheme=stored;}else{root.removeAttribute('data-theme');root.style.colorScheme=system;}}catch(_e){}})();`;
+
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${spaceMono.variable} ${spaceGrotesk.variable} antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: themeBootstrapScript }}
+        />
+      </head>
       <body className="bg-background text-foreground font-sans min-h-screen flex flex-col">
         <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 sm:px-6 lg:px-8">
           <Navbar />

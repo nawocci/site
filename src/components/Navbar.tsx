@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiBookOpen, FiMail } from "react-icons/fi";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const actionPillClasses =
   "hidden rounded-full border-2 px-6 py-2.5 text-base font-bold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:inline-flex";
@@ -30,6 +31,7 @@ export default function Navbar() {
         </Link>
 
         <div className="ml-2 flex shrink-0 items-center gap-4 sm:gap-6">
+          <ThemeToggle />
           <Link href="/blog" className={actionPillClasses}>
             blog
           </Link>
