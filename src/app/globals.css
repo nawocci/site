@@ -29,12 +29,83 @@ html {
 }
 
 @theme {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-space-grotesk);
   --font-mono: var(--font-space-mono);
   --color-primary: var(--primary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-border: var(--border);
+}
+
+.post-prose-body {
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: normal;
+}
+
+.post-prose-body blockquote {
+  position: relative;
+  width: fit-content;
+  max-width: min(100%, 34rem);
+  margin: 1.75rem auto;
+  padding: 1rem 1.35rem;
+  border: 1px solid color-mix(in oklab, var(--border) 82%, var(--primary));
+  border-radius: 0.875rem;
+  background: color-mix(in oklab, var(--primary) 7%, var(--background));
+  color: color-mix(in oklab, var(--foreground) 78%, var(--background));
+  text-align: center;
+}
+
+.post-prose-body blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.3rem;
+  left: 0.7rem;
+  color: color-mix(in oklab, var(--primary) 66%, var(--foreground));
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.post-prose-body blockquote::after {
+  content: "\201D";
+  position: absolute;
+  right: 1.2rem;
+  bottom: -0.3rem;
+  color: color-mix(in oklab, var(--primary) 66%, var(--foreground));
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.post-prose-body blockquote > :first-child {
+  margin-top: 0;
+}
+
+.post-prose-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.post-prose-body blockquote p {
+  margin: 0;
+  font-style: italic;
+  font-size: 1.03em;
+  line-height: 1.7;
+}
+
+.post-prose-body blockquote p + p {
+  margin-top: 0.85rem;
+}
+
+.post-prose-body blockquote cite {
+  display: block;
+  margin-top: 0.85rem;
+  font-style: normal;
+  font-size: 0.875rem;
+  color: color-mix(in oklab, var(--foreground) 58%, var(--background));
 }
 
 .hero-fallback-gradient {
@@ -44,17 +115,6 @@ html {
     color-mix(in oklab, var(--primary) 18%, transparent) 45%,
     color-mix(in oklab, var(--primary) 35%, transparent) 100%
   );
-}
-
-.code-block pre {
-  margin: 0;
-  padding: 1rem 1.25rem;
-}
-
-.code-block pre code {
-  font-family: var(--font-space-mono);
-  font-size: 0.875rem;
-  line-height: 1.75;
 }
 
 @media (prefers-color-scheme: dark) {

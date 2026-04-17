@@ -151,7 +151,7 @@ async function BlogPostContent({
         />
 
         <div className="mx-auto w-full max-w-3xl">
-          <div className="prose sm:prose-lg max-w-none prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert motion-fade-up motion-delay-3">
+          <div className="post-prose-body prose sm:prose-lg max-w-none prose-headings:tracking-tight prose-headings:text-foreground prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-border/60 prose-h2:pb-2 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-foreground/80 prose-li:my-1 prose-li:text-foreground/80 prose-a:text-primary prose-a:no-underline prose-a:transition-colors prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-hr:my-10 prose-hr:border-border prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert motion-fade-up motion-delay-3 [&_a:hover]:underline [&_a:hover]:decoration-current [&_a:hover]:underline-offset-[0.18em]">
             {Array.isArray(post.body) && post.body.length > 0 ? (
               <PortableText value={post.body as never} components={portableTextComponents} />
             ) : (

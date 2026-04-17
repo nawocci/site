@@ -108,7 +108,7 @@ export default async function CodeBlock({ language, code, filename }: CodeBlockP
 
       <div className="overflow-x-auto">
         <div
-          className="code-block"
+          className="code-block [&_pre]:m-0 [&_pre]:px-5 [&_pre]:py-4 [&_pre_code]:font-mono [&_pre_code]:text-sm [&_pre_code]:leading-7"
           dangerouslySetInnerHTML={{ __html: highlightedHtml }}
         />
       </div>
