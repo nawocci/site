@@ -13,21 +13,21 @@ export default function Home() {
   return (
     <div className="w-full py-0 sm:py-10">
       <div className="flex w-full min-h-[calc(100svh-12rem)] items-center sm:block sm:min-h-0">
-        <section className="relative w-full overflow-hidden rounded-3xl border border-border bg-background p-4 font-mono sm:p-8">
+        <section className="relative w-full overflow-hidden rounded-3xl border border-border bg-background p-4 font-mono sm:p-8 motion-scale-in">
           <div className="space-y-6 sm:space-y-8">
-            <p className="text-xs uppercase tracking-[0.2em] text-foreground/60">profile.md</p>
+            <p className="motion-fade-up text-xs uppercase tracking-[0.2em] text-foreground/60">profile.md</p>
 
-            <div className="rounded-2xl border border-border bg-background p-4 sm:p-8">
+            <div className="rounded-2xl border border-border bg-background p-4 sm:p-8 motion-fade-up motion-delay-1">
               <p className="text-xs text-foreground/60">title:</p>
-              <h1 className="mt-2 text-2xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl">
+              <h1 className="mt-2 text-2xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl motion-fade-up motion-delay-2">
                 Developer &amp; Analyst
               </h1>
 
-              <div className="mt-4 flex flex-wrap gap-2 sm:mt-6">
+              <div className="mt-4 flex flex-wrap gap-2 sm:mt-6 motion-fade-up motion-delay-2">
                 {heroPills.map((pill) => (
                   <span
                     key={pill.label}
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1.5 text-xs font-semibold text-foreground/80"
+                    className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1.5 text-xs font-semibold text-foreground/80 transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/60"
                   >
                     <pill.icon className="h-3.5 w-3.5 text-primary" />
                     {pill.label}
@@ -35,12 +35,12 @@ export default function Home() {
                 ))}
               </div>
 
-              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-foreground/80 sm:mt-6 sm:text-lg">
+              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-foreground/80 sm:mt-6 sm:text-lg motion-fade-up motion-delay-3">
                 Hi, I&apos;m Naufal Altaf, based in Indonesia. I write, code, and build things I use. I dive into bleeding-edge tech to solve problems that I encounter, and I usually keep learning by building small things that solve real problems along the way.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 motion-fade-up motion-delay-3">
               <a
                 href="https://google.com"
                 target="_blank"

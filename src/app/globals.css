@@ -1,11 +1,22 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
 :root {
   --primary: #FF7F5A;
   --background: #FFFFFF;
   --foreground: #2D3748;
   --border: #dcecf5;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,4 +44,72 @@
     color-mix(in oklab, var(--primary) 18%, transparent) 45%,
     color-mix(in oklab, var(--primary) 35%, transparent) 100%
   );
+}
+
+@keyframes motion-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes motion-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes motion-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(48px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.motion-fade-up {
+  animation: motion-fade-up 560ms var(--motion-ease) both;
+}
+
+.motion-scale-in {
+  animation: motion-scale-in 480ms var(--motion-ease) both;
+}
+
+.motion-card-in {
+  animation: motion-card-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.motion-delay-1 {
+  animation-delay: 120ms;
+}
+
+.motion-delay-2 {
+  animation-delay: 220ms;
+}
+
+.motion-delay-3 {
+  animation-delay: 320ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-fade-up,
+  .motion-scale-in,
+  .motion-card-in {
+    animation: none;
+  }
 }

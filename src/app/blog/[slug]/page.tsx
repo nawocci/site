@@ -37,7 +37,7 @@ export default async function BlogPostPage({
   return (
     <article className="w-full pb-8 sm:pb-10 lg:pb-14 font-mono">
       <div className="space-y-6 sm:space-y-8">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 motion-fade-up">
           <Link
             href="/blog"
             aria-label="Back to blog"
@@ -73,7 +73,7 @@ export default async function BlogPostPage({
       </div>
 
       <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
-        <header className="space-y-4 border-b pb-6">
+        <header className="space-y-4 border-b pb-6 motion-fade-up motion-delay-1">
           <div className="flex flex-wrap items-center justify-start gap-2 sm:gap-3">
             <p className={datePillClass}>
               {new Date(publishedDate).toLocaleDateString()}
@@ -84,21 +84,21 @@ export default async function BlogPostPage({
               </p>
             ) : null}
           </div>
-          <p className="text-center text-xs uppercase tracking-[0.25em] text-foreground/55">
+          <p className="text-center text-xs uppercase tracking-[0.25em] text-foreground/55 motion-fade-up motion-delay-2">
             Title
           </p>
-          <h1 className="mx-auto max-w-4xl text-center text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+          <h1 className="mx-auto max-w-4xl text-center text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-6xl motion-fade-up motion-delay-2">
             {post.title}
           </h1>
           {post.excerpt ? (
-            <p className="mx-auto max-w-3xl text-center text-base sm:text-lg leading-7 sm:leading-8 text-foreground/70">
+            <p className="mx-auto max-w-3xl text-center text-base sm:text-lg leading-7 sm:leading-8 text-foreground/70 motion-fade-up motion-delay-3">
               {post.excerpt}
             </p>
           ) : null}
         </header>
 
         <div className="mx-auto w-full max-w-3xl">
-          <div className="prose sm:prose-lg max-w-none prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert">
+          <div className="prose sm:prose-lg max-w-none prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground/80 prose-li:text-foreground/80 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-blockquote:border-l-primary prose-blockquote:text-foreground/70 prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert motion-fade-up motion-delay-3">
             {Array.isArray(post.body) && post.body.length > 0 ? (
               <PortableText value={post.body as never} />
             ) : (
