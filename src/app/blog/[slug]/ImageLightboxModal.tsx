@@ -22,13 +22,19 @@ export default function ImageLightboxModal({
   onRequestClose,
 }: ImageLightboxModalProps) {
   const canUseDOM = typeof document !== "undefined";
-  const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
-  const isImageReady = loadedSrc === src;
+  const [visibleSrc, setVisibleSrc] = useState<string | null>(null);
+  const isImageReady = visibleSrc === src;
   const frameAspectRatio = `${width} / ${height}`;
   const frameWidth = `min(calc(100vw - 2rem), calc((100vh - 9rem) * ${width} / ${height}))`;
-  const modalImageClass = `m-0 rounded-2xl shadow-xl shadow-black/35 transition-opacity duration-200 ${
-    isImageReady ? "opacity-100" : "opacity-0"
+  const modalImageClass = `m-0 rounded-2xl shadow-xl shadow-black/35 transition-all duration-280 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+    isImageReady ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-[0.97] translate-y-1"
   }`;
+
+  const handleImageResolved = () => {
+    requestAnimationFrame(() => {
+      setVisibleSrc(src);
+    });
+  };
 
   useEffect(() => {
     if (!canUseDOM) {
@@ -99,8 +105,8 @@ export default function ImageLightboxModal({
           className={`${modalImageClass} object-contain`}
           sizes="(max-width: 640px) calc(100vw - 2rem), calc(100vw - 3rem)"
           priority
-          onLoad={() => setLoadedSrc(src)}
-          onError={() => setLoadedSrc(src)}
+          onLoad={handleImageResolved}
+          onError={handleImageResolved}
         />
       </div>
     </div>,

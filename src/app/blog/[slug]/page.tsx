@@ -35,7 +35,7 @@ function HeroMedia({ heroImageUrl }: { heroImageUrl: string | null }) {
   }
 
   return (
-    <div className="hero-fallback-gradient relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-border shadow-lg shadow-foreground/15 sm:rounded-3xl">
+    <div className="hero-fallback-gradient relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-border shadow-lg shadow-foreground/15 sm:rounded-3xl motion-fade-up motion-delay-1">
       <div className="absolute -left-8 top-4 h-24 w-24 rounded-full bg-background/35 blur-2xl sm:top-6 sm:h-32 sm:w-32" />
       <div className="absolute bottom-0 right-0 h-28 w-28 rounded-full bg-primary/25 blur-3xl sm:h-40 sm:w-40" />
       <div className="absolute inset-x-0 bottom-0 p-4 text-xs font-semibold tracking-wide text-foreground/80 sm:p-6 sm:text-sm">

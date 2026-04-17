@@ -12,7 +12,7 @@ export default function HeroImage({ src, alt }: HeroImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-border bg-border shadow-lg shadow-foreground/15 sm:rounded-3xl">
+    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-border bg-border shadow-lg shadow-foreground/15 sm:rounded-3xl motion-fade-up motion-delay-1">
       <Image
         src={src}
         alt={alt}
