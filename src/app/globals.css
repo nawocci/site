@@ -36,34 +36,34 @@ figure {
 }
 
 :root {
-  --primary: #FF7F5A;
-  --background: #FFFFFF;
-  --foreground: #2D3748;
-  --border: #dcecf5;
+  --primary: #C95C7A;
+  --background: #FFF9FB;
+  --foreground: #3A2F36;
+  --border: #EBDCE4;
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #FF6347;
-    --background: #121212;
-    --foreground: #E5E7EB;
-    --border: #313131;
+    --primary: #D08AA2;
+    --background: #1A1A1A;
+    --foreground: #F3EDF2;
+    --border: #383238;
   }
 }
 
 html[data-theme="light"] {
-  --primary: #FF7F5A;
-  --background: #FFFFFF;
-  --foreground: #2D3748;
-  --border: #dcecf5;
+  --primary: #C95C7A;
+  --background: #FFF9FB;
+  --foreground: #3A2F36;
+  --border: #EBDCE4;
 }
 
 html[data-theme="dark"] {
-  --primary: #FF6347;
-  --background: #121212;
-  --foreground: #E5E7EB;
-  --border: #313131;
+  --primary: #D08AA2;
+  --background: #1A1A1A;
+  --foreground: #F3EDF2;
+  --border: #383238;
 }
 
 @theme {

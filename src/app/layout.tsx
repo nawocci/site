@@ -24,7 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const themeBootstrapScript = `(function(){try{var key='theme';var stored=localStorage.getItem(key);var root=document.documentElement;var system=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(stored==='light'||stored==='dark'){root.setAttribute('data-theme',stored);root.style.colorScheme=stored;}else{root.removeAttribute('data-theme');root.style.colorScheme=system;}}catch(_e){}})();`;
+  const themeBootstrapScript = `(function(){try{var themeKey='theme';var storedTheme=localStorage.getItem(themeKey);var root=document.documentElement;var system=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(storedTheme==='light'||storedTheme==='dark'){root.setAttribute('data-theme',storedTheme);root.style.colorScheme=storedTheme;}else{root.removeAttribute('data-theme');root.style.colorScheme=system;}}catch(_e){}})();`;
 
   return (
     <html
