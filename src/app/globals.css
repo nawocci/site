@@ -50,7 +50,8 @@ html {
   padding: 1rem 1.35rem;
   border: 1px solid color-mix(in oklab, var(--border) 82%, var(--primary));
   border-radius: 0.875rem;
-  background: color-mix(in oklab, var(--primary) 7%, var(--background));
+  background: var(--background);
+  box-shadow: 0 4px 12px color-mix(in oklab, var(--foreground) 10%, transparent);
   color: color-mix(in oklab, var(--foreground) 78%, var(--background));
   text-align: center;
 }
