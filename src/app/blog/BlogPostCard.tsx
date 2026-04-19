@@ -77,7 +77,7 @@ export default function BlogPostCard({
 
       {imageUrl && !isImageReady ? (
         <div className="pointer-events-none absolute inset-0 z-10 rounded-xl sm:rounded-2xl border-2 border-border overflow-hidden bg-background">
-          <BlogCardSkeleton />
+          <BlogCardSkeleton framed={false} />
         </div>
       ) : null}
     </li>
