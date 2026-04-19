@@ -10,7 +10,7 @@ import MobileActionBar from "@/components/MobileActionBar";
 const actionPillClasses =
   "hidden rounded-full border-2 px-6 py-2.5 text-base font-bold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:inline-flex";
 
-function NavbarView({ isBlogRoute }: { isBlogRoute: boolean }) {
+function NavbarView({ isHomeRoute, isBlogRoute }: { isHomeRoute: boolean; isBlogRoute: boolean }) {
   return (
     <>
       <nav className="w-full border-b border-border py-4 font-mono sm:border-b-0 sm:py-10">
@@ -72,21 +72,22 @@ function NavbarView({ isBlogRoute }: { isBlogRoute: boolean }) {
         </div>
       </nav>
 
-      <MobileActionBar isBlogRoute={isBlogRoute} />
+      <MobileActionBar isHomeRoute={isHomeRoute} isBlogRoute={isBlogRoute} />
     </>
   );
 }
 
 function NavbarPathAware() {
   const pathname = usePathname();
+  const isHomeRoute = pathname === "/";
   const isBlogRoute = pathname.startsWith("/blog");
 
-  return <NavbarView isBlogRoute={isBlogRoute} />;
+  return <NavbarView isHomeRoute={isHomeRoute} isBlogRoute={isBlogRoute} />;
 }
 
 export default function Navbar() {
   return (
-    <Suspense fallback={<NavbarView isBlogRoute={false} />}>
+    <Suspense fallback={<NavbarView isHomeRoute={true} isBlogRoute={false} />}>
       <NavbarPathAware />
     </Suspense>
   );
