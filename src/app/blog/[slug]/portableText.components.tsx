@@ -1,6 +1,10 @@
+import { PortableTextComponentProps } from "next-sanity";
+import { PortableTextBlock } from "@portabletext/types";
 import InlineImageLightbox from "./InlineImageLightbox";
 import CodeBlock from "./CodeBlock";
 import { urlForAsset } from "@/lib/sanity.image";
+import LinkedHeader from "./LinkedHeader";
+import { toPlainText, slugify } from "@/lib/sanity.utils";
 
 type PortableTextImageValue = {
   _type: "image";
@@ -23,6 +27,7 @@ type PortableTextCodeBlockValue = {
   code?: string | null;
   filename?: string | null;
 };
+
 
 export const portableTextComponents = {
   types: {
@@ -67,6 +72,32 @@ export const portableTextComponents = {
     },
     code_block: ({ value }: { value: PortableTextCodeBlockValue }) => {
       return <CodeBlock language={value.language} code={value.code} filename={value.filename} />;
+    },
+  },
+  block: {
+    h2: ({ children, value }: PortableTextComponentProps<PortableTextBlock>) => {
+      const id = slugify(toPlainText([value]));
+      return (
+        <LinkedHeader level={2} id={id}>
+          {children}
+        </LinkedHeader>
+      );
+    },
+    h3: ({ children, value }: PortableTextComponentProps<PortableTextBlock>) => {
+      const id = slugify(toPlainText([value]));
+      return (
+        <LinkedHeader level={3} id={id}>
+          {children}
+        </LinkedHeader>
+      );
+    },
+    h4: ({ children, value }: PortableTextComponentProps<PortableTextBlock>) => {
+      const id = slugify(toPlainText([value]));
+      return (
+        <LinkedHeader level={4} id={id}>
+          {children}
+        </LinkedHeader>
+      );
     },
   },
 };
