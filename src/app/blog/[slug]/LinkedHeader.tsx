@@ -40,12 +40,11 @@ export default function LinkedHeader({ level, id, children }: LinkedHeaderProps)
       </button>
 
       {/* Mobile-friendly Hyperlink */}
-      <a 
-        href={`#${id}`} 
-        className="no-underline text-inherit hover:text-primary transition-colors block lg:inline-block"
+      <span 
+        className="text-foreground transition-colors block lg:inline-block cursor-default"
       >
         {children}
-      </a>
+      </span>
     </Tag>
   );
 }

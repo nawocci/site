@@ -1,5 +1,6 @@
 import { PortableTextComponentProps } from "next-sanity";
 import { PortableTextBlock } from "@portabletext/types";
+import Link from "next/link";
 import InlineImageLightbox from "./InlineImageLightbox";
 import CodeBlock from "./CodeBlock";
 import { urlForAsset } from "@/lib/sanity.image";
@@ -72,6 +73,32 @@ export const portableTextComponents = {
     },
     code_block: ({ value }: { value: PortableTextCodeBlockValue }) => {
       return <CodeBlock language={value.language} code={value.code} filename={value.filename} />;
+    },
+  },
+  marks: {
+    link: ({ children, value }: { children: React.ReactNode; value?: { href?: string } }) => {
+      const href = value?.href || "";
+      const isExternal = href.startsWith("http");
+      if (isExternal) {
+        return (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline decoration-current underline-offset-[0.18em] transition-colors hover:text-primary/80"
+          >
+            {children}
+          </a>
+        );
+      }
+      return (
+        <Link
+          href={href}
+          className="text-primary underline decoration-current underline-offset-[0.18em] transition-colors hover:text-primary/80"
+        >
+          {children}
+        </Link>
+      );
     },
   },
   block: {
