@@ -6,9 +6,10 @@ import { useState } from "react";
 type HeroImageProps = {
   src: string;
   alt: string;
+  lqip?: string;
 };
 
-export default function HeroImage({ src, alt }: HeroImageProps) {
+export default function HeroImage({ src, alt, lqip }: HeroImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -20,6 +21,8 @@ export default function HeroImage({ src, alt }: HeroImageProps) {
         className="object-cover"
         sizes="(max-width: 1024px) 100vw, 1024px"
         priority
+        placeholder={lqip ? "blur" : "empty"}
+        blurDataURL={lqip}
         onLoad={() => setIsLoaded(true)}
         onError={() => setIsLoaded(true)}
       />

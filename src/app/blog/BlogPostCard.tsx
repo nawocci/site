@@ -13,6 +13,7 @@ type BlogPostCardProps = {
   displayDate: string;
   excerpt?: string | null;
   imageUrl?: string;
+  lqip?: string;
   index: number;
 };
 
@@ -23,6 +24,7 @@ export default function BlogPostCard({
   displayDate,
   excerpt,
   imageUrl,
+  lqip,
   index,
 }: BlogPostCardProps) {
   const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
@@ -45,6 +47,8 @@ export default function BlogPostCard({
               fill
               loading={shouldEagerLoad ? "eager" : "lazy"}
               priority={shouldPreload}
+              placeholder={lqip ? "blur" : "empty"}
+              blurDataURL={lqip}
               onLoad={() => setLoadedSrc(imageUrl)}
               onError={() => setLoadedSrc(imageUrl)}
               className="object-cover h-full w-full transition-transform duration-200 group-hover:scale-110"

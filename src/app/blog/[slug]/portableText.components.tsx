@@ -14,6 +14,7 @@ type PortableTextImageValue = {
   asset?: {
     url?: string;
     metadata?: {
+      lqip?: string;
       dimensions?: {
         width?: number;
         height?: number;
@@ -60,6 +61,8 @@ export const portableTextComponents = {
         quality: 82,
       });
 
+      const lqip = value.asset?.metadata?.lqip;
+
       return (
         <InlineImageLightbox
           previewSrc={previewSrc}
@@ -68,6 +71,7 @@ export const portableTextComponents = {
           width={width}
           height={height}
           caption={value.caption}
+          lqip={lqip}
         />
       );
     },

@@ -7,6 +7,9 @@ export type SanityImage = {
   asset?: {
     _ref: string;
     _type: "reference";
+    metadata?: {
+      lqip?: string;
+    };
   };
 };
 
@@ -14,6 +17,7 @@ type SanityImageAssetWithMetadata = {
   _id: string;
   url?: string;
   metadata?: {
+    lqip?: string;
     dimensions?: {
       width?: number;
       height?: number;
@@ -59,7 +63,15 @@ export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | ord
   "slug": slug.current,
   publishedAt,
   excerpt,
-  image
+  image {
+    ...,
+    asset-> {
+      _id,
+      metadata {
+        lqip
+      }
+    }
+  }
 }`;
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0] {
@@ -70,7 +82,15 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
   "slug": slug.current,
   publishedAt,
   excerpt,
-  image,
+  image {
+    ...,
+    asset-> {
+      _id,
+      metadata {
+        lqip
+      }
+    }
+  },
   body[]{
     ...,
     _type == "image" => {
@@ -81,6 +101,7 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
         _id,
         url,
         metadata {
+          lqip,
           dimensions {
             width,
             height,

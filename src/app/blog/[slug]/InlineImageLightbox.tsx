@@ -11,6 +11,7 @@ type InlineImageLightboxProps = {
   width: number;
   height: number;
   caption?: string | null;
+  lqip?: string;
 };
 
 export default function InlineImageLightbox({
@@ -20,6 +21,7 @@ export default function InlineImageLightbox({
   width,
   height,
   caption,
+  lqip,
 }: InlineImageLightboxProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -72,10 +74,14 @@ export default function InlineImageLightbox({
             className="m-0 block h-auto w-full object-cover"
             sizes={isPortrait ? "(max-width: 640px) 80vw, 420px" : "(max-width: 768px) 100vw, 768px"}
             loading="lazy"
+            placeholder={lqip ? "blur" : "empty"}
+            blurDataURL={lqip}
             onLoad={() => setIsPreviewLoaded(true)}
             onError={() => setIsPreviewLoaded(true)}
           />
-          {!isPreviewLoaded ? <span className="pointer-events-none absolute inset-0 bg-border animate-pulse" /> : null}
+          {!isPreviewLoaded && !lqip ? (
+            <span className="pointer-events-none absolute inset-0 bg-border animate-pulse" />
+          ) : null}
         </span>
       </div>
 
@@ -95,10 +101,14 @@ export default function InlineImageLightbox({
             className="m-0 block h-auto w-full object-cover"
             sizes={isPortrait ? "(max-width: 640px) 80vw, 420px" : "(max-width: 768px) 100vw, 768px"}
             loading="lazy"
+            placeholder={lqip ? "blur" : "empty"}
+            blurDataURL={lqip}
             onLoad={() => setIsPreviewLoaded(true)}
             onError={() => setIsPreviewLoaded(true)}
           />
-          {!isPreviewLoaded ? <span className="pointer-events-none absolute inset-0 bg-border animate-pulse" /> : null}
+          {!isPreviewLoaded && !lqip ? (
+            <span className="pointer-events-none absolute inset-0 bg-border animate-pulse" />
+          ) : null}
         </span>
       </button>
       {caption ? (

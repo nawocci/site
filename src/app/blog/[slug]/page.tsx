@@ -23,9 +23,15 @@ type ArticleMetaHeaderProps = {
   excerpt?: string | null;
 };
 
-function HeroMedia({ heroImageUrl }: { heroImageUrl: string | null }) {
+function HeroMedia({
+  heroImageUrl,
+  lqip,
+}: {
+  heroImageUrl: string | null;
+  lqip?: string;
+}) {
   if (heroImageUrl) {
-    return <HeroImage src={heroImageUrl} alt={HERO_IMAGE_ALT} />;
+    return <HeroImage src={heroImageUrl} alt={HERO_IMAGE_ALT} lqip={lqip} />;
   }
 
   return (
@@ -102,6 +108,7 @@ async function BlogPostContent({
   const heroImageUrl = post.image
     ? urlForImage(post.image, { width: 1600, height: 900, fit: "crop", quality: 76 }).url()
     : null;
+  const lqip = post.image?.asset?.metadata?.lqip || undefined;
   const publishedDate = post.publishedAt || post._createdAt;
   const lastModifiedDate = post._updatedAt;
   const hasLastModified =
@@ -127,7 +134,7 @@ async function BlogPostContent({
           </p>
         </div>
 
-        <HeroMedia heroImageUrl={heroImageUrl} />
+        <HeroMedia heroImageUrl={heroImageUrl} lqip={lqip} />
       </div>
 
       <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">

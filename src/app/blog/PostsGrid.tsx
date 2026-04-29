@@ -61,6 +61,7 @@ export async function PostsGrid() {
                 ? urlForImage(post.image, { width: 960, height: 720, fit: "crop", quality: 72 }).url()
                 : undefined
             }
+            lqip={post.image?.asset?.metadata?.lqip || undefined}
             index={index}
           />
         );
