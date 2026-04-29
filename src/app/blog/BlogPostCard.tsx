@@ -35,7 +35,7 @@ export default function BlogPostCard({
     <li className={cardClassName} style={{ animationDelay: `${index * 75}ms` }}>
       <Link
         href={`/blog/${slug}`}
-        className="group flex flex-col rounded-xl sm:rounded-2xl border-2 border-border overflow-hidden bg-background transition-all duration-200 hover:-translate-y-0.5 hover:border-primary"
+        className="group flex flex-col rounded-xl sm:rounded-2xl border-2 border-border overflow-hidden bg-background transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:shadow-card-hover"
       >
         <div className="relative h-48 sm:h-48 lg:h-52 overflow-hidden bg-border">
           {imageUrl ? (
@@ -51,8 +51,12 @@ export default function BlogPostCard({
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             />
           ) : (
-            <div className="relative h-full w-full flex items-center justify-center bg-border">
-              <p className="text-foreground/60">No image</p>
+            <div className="hero-fallback-gradient relative h-full w-full flex items-center justify-center">
+              <div className="absolute -left-4 top-2 h-16 w-16 rounded-full bg-background/35 blur-xl" />
+              <div className="absolute bottom-0 right-0 h-20 w-20 rounded-full bg-primary/25 blur-2xl" />
+              <p className="z-10 text-xs font-semibold tracking-wide text-foreground/60">
+                Featured image coming soon
+              </p>
             </div>
           )}
         </div>

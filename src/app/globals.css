@@ -82,6 +82,41 @@ html[data-theme="dark"] {
   --animate-modal-out: motion-modal-out 170ms cubic-bezier(0.4, 0, 0.2, 1) both;
   --animate-modal-hint-in: motion-modal-hint-in 170ms var(--motion-ease) both;
   --animate-modal-hint-out: motion-modal-hint-out 140ms cubic-bezier(0.4, 0, 0.2, 1) both;
+
+  --shadow-card-hover: 0 12px 24px -8px color-mix(in oklab, var(--foreground) 12%, transparent);
+}
+
+.theme-icon-rotate {
+  transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+button:hover .theme-icon-rotate {
+  transform: rotate(15deg) scale(1.1);
+}
+
+@supports (scrollbar-width: thin) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--border) 80%, var(--primary));
 }
 
 .post-prose-body {

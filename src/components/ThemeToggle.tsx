@@ -97,9 +97,9 @@ export default function ThemeToggle() {
           aria-hidden="true"
         />
       ) : isDark ? (
-        <FiSun className="h-4 w-4" />
+        <FiSun className="theme-icon-rotate h-4 w-4" />
       ) : (
-        <FiMoon className="h-4 w-4" />
+        <FiMoon className="theme-icon-rotate h-4 w-4" />
       )}
       <span className="hidden w-14 text-center md:inline">{isInitializing ? "theme" : isDark ? "light" : "dark"}</span>
     </button>
