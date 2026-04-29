@@ -12,7 +12,7 @@ const heroPills = [
 
 export default function Home() {
   return (
-    <div className="w-full py-0 sm:py-10">
+    <div className="w-full pt-4 sm:pt-10">
       <div className="flex w-full min-h-[calc(100svh-12rem)] items-center sm:block sm:min-h-0">
         <section className="relative w-full overflow-hidden rounded-3xl border border-border bg-background p-5 font-mono sm:p-8 motion-scale-in">
           <div className="space-y-6 sm:space-y-8">

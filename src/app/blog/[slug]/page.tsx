@@ -115,7 +115,7 @@ async function BlogPostContent({
     new Date(lastModifiedDate).toDateString() !== new Date(post._createdAt).toDateString();
 
   return (
-    <article className="w-full pb-8 sm:pb-10 lg:pb-14 font-mono">
+    <article className="w-full pt-4 pb-8 sm:pt-0 sm:pb-10 lg:pb-14 font-mono">
       <div className="space-y-6 sm:space-y-8">
         <div className="flex items-center justify-between gap-4 motion-fade-up">
           <Link
