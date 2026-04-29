@@ -22,3 +22,10 @@ export function slugify(text: string): string {
     .replace(/-+/g, "-") // Replace multiple - with single -
     .trim();
 }
+
+export const formatDate = (value: string) =>
+  new Date(value).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });

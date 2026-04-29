@@ -4,22 +4,16 @@ import { Suspense } from "react";
 import { PortableText } from "next-sanity";
 import { FiArrowLeft } from "react-icons/fi";
 
-import { sanityClient } from "@/lib/sanity.client";
+import { sanityClient, getFreshClient } from "@/lib/sanity.client";
 import { postBySlugQuery, type BlogPost } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
-import { UI_BUTTON_CLASSNAMES } from "@/lib/ui.classes";
+import { formatDate } from "@/lib/sanity.utils";
+import { UI_BUTTON_CLASSNAMES, UI_BLOG_CLASSNAMES } from "@/lib/ui.classes";
 import BlogPostLoading from "./loading";
 import HeroImage from "./HeroImage";
 import { portableTextComponents } from "./portableText.components";
 
 const HERO_IMAGE_ALT = "Featured blog image";
-
-const DATE_PILL_CLASS =
-  "inline-flex w-fit max-w-full self-start rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary sm:px-3 sm:text-sm";
-const ARTICLE_LABEL_STYLE = { letterSpacing: "0.3em" } as const;
-const TITLE_LABEL_STYLE = { letterSpacing: "0.25em" } as const;
-
-const formatDate = (value: string) => new Date(value).toLocaleDateString();
 
 type ArticleMetaHeaderProps = {
   publishedDate: string;
@@ -55,12 +49,14 @@ function ArticleMetaHeader({
   return (
     <header className="space-y-4 border-b pb-6 motion-fade-up motion-delay-1">
       <div className="flex flex-wrap items-center justify-start gap-2 sm:gap-3">
-        <p className={DATE_PILL_CLASS}>Published {formatDate(publishedDate)}</p>
-        {hasLastModified ? <p className={DATE_PILL_CLASS}>Updated {formatDate(lastModifiedDate)}</p> : null}
+        <p className={UI_BLOG_CLASSNAMES.datePill}>Published {formatDate(publishedDate)}</p>
+        {hasLastModified ? (
+          <p className={UI_BLOG_CLASSNAMES.datePill}>Updated {formatDate(lastModifiedDate)}</p>
+        ) : null}
       </div>
       <p
         className="text-center text-xs uppercase text-foreground/55 motion-fade-up motion-delay-2"
-        style={TITLE_LABEL_STYLE}
+        style={UI_BLOG_CLASSNAMES.titleLabel}
       >
         Title
       </p>
@@ -95,8 +91,9 @@ async function BlogPostContent({
 }) {
   const { slug } = await params;
 
-  const freshClient = sanityClient.withConfig({ useCdn: false });
-  const post = await freshClient.fetch<BlogPost | null>(postBySlugQuery, { slug });
+  const post = await getFreshClient().fetch<BlogPost | null>(postBySlugQuery, {
+    slug,
+  });
 
   if (!post) {
     notFound();
@@ -122,7 +119,10 @@ async function BlogPostContent({
             <FiArrowLeft className="h-4 w-4 sm:hidden" />
             <span className="hidden sm:inline">Back to blog</span>
           </Link>
-          <p className="text-xs uppercase text-foreground/50" style={ARTICLE_LABEL_STYLE}>
+          <p
+            className="text-xs uppercase text-foreground/50"
+            style={UI_BLOG_CLASSNAMES.articleLabel}
+          >
             Article
           </p>
         </div>
@@ -142,7 +142,7 @@ async function BlogPostContent({
         <div className="mx-auto w-full max-w-3xl">
           <div className="post-prose-body prose sm:prose-lg max-w-none prose-headings:tracking-tight prose-headings:text-foreground prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-border/60 prose-h2:pb-2 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-foreground/80 prose-li:my-1 prose-li:text-foreground/80 prose-a:text-primary prose-a:no-underline prose-a:transition-colors prose-strong:text-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-hr:my-10 prose-hr:border-border prose-ol:pl-8 prose-ul:pl-8 dark:prose-invert motion-fade-up motion-delay-3 [&_a:hover]:underline [&_a:hover]:decoration-current [&_a:hover]:underline-offset-[0.18em]">
             {Array.isArray(post.body) && post.body.length > 0 ? (
-              <PortableText value={post.body as never} components={portableTextComponents} />
+              <PortableText value={post.body as any} components={portableTextComponents} />
             ) : (
               <p>No content added yet.</p>
             )}

@@ -69,10 +69,19 @@ html[data-theme="dark"] {
 @theme {
   --font-sans: var(--font-space-grotesk);
   --font-mono: var(--font-space-mono);
+
   --color-primary: var(--primary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-border: var(--border);
+
+  --animate-fade-up: motion-fade-up 560ms var(--motion-ease) both;
+  --animate-scale-in: motion-scale-in 480ms var(--motion-ease) both;
+  --animate-card-in: motion-card-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-modal-in: motion-modal-in 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-modal-out: motion-modal-out 170ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  --animate-modal-hint-in: motion-modal-hint-in 170ms var(--motion-ease) both;
+  --animate-modal-hint-out: motion-modal-hint-out 140ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 .post-prose-body {

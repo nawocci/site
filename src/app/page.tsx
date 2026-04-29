@@ -51,7 +51,7 @@ export default function Home() {
                 href="/cv-naufal-altaf-2026-04-19.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition-colors duration-200 hover:bg-primary"
+                className={UI_BUTTON_CLASSNAMES.primary}
               >
                 Download CV
                 <FiDownload className="h-4 w-4" />

@@ -17,3 +17,5 @@ export const sanityClient = createClient({
   apiVersion: "2026-04-16",
   useCdn: process.env.NODE_ENV === "production",
 });
+
+export const getFreshClient = () => sanityClient.withConfig({ useCdn: false });
