@@ -13,7 +13,7 @@ const actionPillClasses =
 function NavbarView({ isHomeRoute, isBlogRoute }: { isHomeRoute: boolean; isBlogRoute: boolean }) {
   return (
     <>
-      <nav className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 py-4 font-mono backdrop-blur-md sm:border-b-0 sm:py-7">
+      <nav className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 py-4 font-mono backdrop-blur-md sm:border-b-0 sm:py-8">
         {/* Mobile Logo */}
         <div className="md:hidden">
           <Logo />

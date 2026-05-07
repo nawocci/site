@@ -12,8 +12,8 @@ const heroPills = [
 
 export default function Home() {
   return (
-    <div className="w-full pt-4 sm:pt-6 md:pt-8">
-      <div className="flex w-full min-h-[calc(100svh-14rem)] items-center sm:block sm:min-h-0">
+    <div className="flex w-full flex-1 flex-col overflow-hidden">
+      <div className="flex w-full flex-1 items-center py-4 sm:py-8">
         <section className="relative w-full overflow-hidden rounded-3xl border border-border bg-background p-5 font-mono sm:p-7 motion-scale-in">
           <div className="space-y-5 sm:space-y-6">
             <p className="motion-fade-up text-xs uppercase text-foreground/60" style={{ letterSpacing: "0.2em" }}>
