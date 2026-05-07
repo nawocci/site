@@ -13,27 +13,37 @@ const heroPills = [
 export default function Home() {
   return (
     <div className="flex w-full flex-1 flex-col overflow-hidden">
-      <div className="flex w-full flex-1 items-center py-4 sm:py-8">
-        <section className="relative w-full overflow-hidden rounded-3xl border border-border bg-background p-5 font-mono sm:p-7 motion-scale-in">
+      <div className="flex w-full flex-1 items-start pt-2 sm:items-center sm:py-8">
+        {/* Desktop: card with border chrome. Mobile: transparent, no borders */}
+        <section className="relative w-full overflow-hidden font-mono sm:rounded-3xl sm:border sm:border-border sm:bg-background sm:p-7 motion-scale-in">
           <div className="space-y-5 sm:space-y-6">
-            <p className="motion-fade-up text-xs uppercase text-foreground/60" style={{ letterSpacing: "0.2em" }}>
+            {/* "profile.md" label — desktop only */}
+            <p
+              className="hidden sm:block motion-fade-up text-xs uppercase text-foreground/60"
+              style={{ letterSpacing: "0.2em" }}
+            >
               profile.md
             </p>
 
-            <div className="rounded-2xl border border-border bg-background p-5 sm:p-7 motion-fade-up motion-delay-1">
-              <p className="text-xs text-foreground/60">title:</p>
+            {/* Desktop: inner card. Mobile: no chrome, stacked sections */}
+            <div className="sm:rounded-2xl sm:border sm:border-border sm:bg-background sm:p-7 motion-fade-up motion-delay-1">
+              {/* "title:" label — desktop only */}
+              <p className="hidden sm:block text-xs text-foreground/60">title:</p>
+
+              {/* Section 1: Title */}
               <h1
-                className="mt-2 text-2xl font-bold tracking-tight sm:text-5xl md:text-6xl motion-fade-up motion-delay-2"
+                className="text-3xl font-bold tracking-tight sm:mt-2 sm:text-5xl md:text-6xl motion-fade-up motion-delay-2"
                 style={{ lineHeight: 0.95 }}
               >
                 Developer &amp; Analyst
               </h1>
 
-              <div className="mt-4 flex flex-wrap gap-2 sm:mt-5 motion-fade-up motion-delay-2">
+              {/* Section 2: Skills — horizontal scroll on mobile, wrap on desktop */}
+              <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 scrollbar-none sm:mx-0 sm:mt-5 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0 motion-fade-up motion-delay-2">
                 {heroPills.map((pill) => (
                   <span
                     key={pill.label}
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1.5 text-xs font-semibold text-foreground/80 transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/60"
+                    className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1.5 text-xs font-semibold text-foreground/80 transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/60"
                   >
                     <pill.icon className="h-3.5 w-3.5 text-primary" />
                     {pill.label}
@@ -41,11 +51,13 @@ export default function Home() {
                 ))}
               </div>
 
-              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-foreground/80 sm:mt-5 sm:text-lg motion-fade-up motion-delay-3">
+              {/* Section 3: Bio */}
+              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-foreground/80 sm:text-lg motion-fade-up motion-delay-3">
                 Hi, I&apos;m Naufal Altaf, based in Indonesia. I write, code, and build things I use. I dive into bleeding-edge tech to solve problems that I encounter, and I usually keep learning by building small things that solve real problems along the way.
               </p>
             </div>
 
+            {/* Section 4: CTA buttons */}
             <div className="flex flex-wrap gap-3 motion-fade-up motion-delay-3">
               <a
                 href="/cv-naufal-altaf-2026-04-19.pdf"

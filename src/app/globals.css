@@ -119,6 +119,15 @@ button:hover .theme-icon-rotate {
   background: color-mix(in oklab, var(--border) 80%, var(--primary));
 }
 
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 .post-prose-body {
   font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   letter-spacing: normal;
