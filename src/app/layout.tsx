@@ -3,6 +3,7 @@ import { Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { SITE_CONFIG } from "@/config/site";
 
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
@@ -18,7 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Naufal Altaf",
   icons: {
-    icon: "https://avatars.githubusercontent.com/nawocci",
+    icon: SITE_CONFIG.githubAvatarUrl,
   },
 };
 
