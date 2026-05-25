@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 import MobileActionBar from "@/components/MobileActionBar";
 import Logo from "@/components/Logo";
+import { SITE_CONFIG } from "@/config/site";
 
 const actionPillClasses =
   "hidden rounded-full border-2 px-6 py-2.5 text-base font-bold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary md:inline-flex";
@@ -20,7 +21,7 @@ function NavbarView({ isHomeRoute, isBlogRoute }: { isHomeRoute: boolean; isBlog
           <Link href="/" className="group absolute left-0">
             <div className="relative h-9 w-9 overflow-hidden rounded-full border-2 transition-transform duration-200 group-hover:scale-110">
               <Image
-                src="https://avatars.githubusercontent.com/nawocci"
+                src={SITE_CONFIG.githubAvatarUrl}
                 alt="Naufal Altaf"
                 fill
                 sizes="36px"
