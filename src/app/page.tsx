@@ -53,7 +53,7 @@ export default function Home() {
               </div>
               <div className="flex flex-wrap gap-3 motion-fade-up motion-delay-3">
                 <a
-                  href="/cv-naufal-altaf-2026-04-19.pdf"
+                  href="/cv-naufal-altaf-2026-05-25.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={UI_BUTTON_CLASSNAMES.primary}
@@ -113,7 +113,7 @@ export default function Home() {
 
               <div className="flex flex-col gap-2.5">
                 <a
-                  href="/cv-naufal-altaf-2026-04-19.pdf"
+                  href="/cv-naufal-altaf-2026-05-25.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-sm font-semibold text-background shadow-md transition-all duration-200 hover:bg-primary hover:shadow-lg active:scale-[0.98]"
