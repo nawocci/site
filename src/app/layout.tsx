@@ -17,6 +17,9 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Naufal Altaf",
+  icons: {
+    icon: "https://avatars.githubusercontent.com/nawocci",
+  },
 };
 
 export default function RootLayout({
