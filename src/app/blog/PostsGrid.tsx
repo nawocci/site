@@ -15,7 +15,7 @@ function EmptyPostsState() {
   return (
     <section className="mx-auto w-full max-w-3xl rounded-2xl border-2 border-border bg-background px-5 py-6 sm:rounded-3xl sm:px-7 sm:py-8 motion-fade-up motion-delay-1">
       <p
-        className="text-xs uppercase text-foreground/55"
+        className="text-xs uppercase text-muted-foreground"
         style={UI_BLOG_CLASSNAMES.articleLabel}
       >
         Blog status
@@ -23,7 +23,7 @@ function EmptyPostsState() {
       <h2 className="mt-3 text-xl font-bold tracking-tight text-foreground sm:text-3xl">
         No posts yet
       </h2>
-      <p className="mt-3 text-sm leading-relaxed text-foreground/70 sm:text-base">
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
         Nothing is published yet. Once a post is published, it will appear here.
       </p>
       <div className="mt-5 flex flex-wrap gap-3">

@@ -10,8 +10,8 @@ export default function Footer() {
   const currentYear = process.env.NEXT_PUBLIC_COPYRIGHT_YEAR ?? "2026";
 
   return (
-    <footer className="w-full py-6 font-mono text-center text-xs text-foreground/70 sm:py-8 sm:text-sm">
-      <p>&copy; {currentYear} Naufal Altaf.</p>
+    <footer className="w-full py-6 font-mono text-center text-xs text-muted-foreground sm:py-8 sm:text-sm">
+      <p className="tabular-nums">&copy; {currentYear} Naufal Altaf.</p>
       <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-y-0">
         {socialLinks.map((link) => (
           <a
@@ -19,7 +19,7 @@ export default function Footer() {
             href={link.href}
             target={link.isExternal ? "_blank" : undefined}
             rel={link.isExternal ? "noopener noreferrer" : undefined}
-            className="transition-colors hover:text-primary hover:underline"
+            className="transition-colors can-hover:hover:text-primary can-hover:hover:underline"
           >
             {link.label}
           </a>

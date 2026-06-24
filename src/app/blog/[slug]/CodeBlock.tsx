@@ -100,7 +100,7 @@ export default async function CodeBlock({ language, code, filename }: CodeBlockP
   return (
     <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-border bg-background shadow-md shadow-foreground/10">
       <figcaption className="flex items-center justify-between gap-3 border-b border-border/70 bg-background/90 px-4 py-2.5">
-        <span className="min-w-0 truncate text-xs font-semibold uppercase tracking-[0.2em] text-foreground/55">
+        <span className="min-w-0 truncate text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
           {languageLabel}
         </span>
         <CodeBlockCopyButton code={rawCode} />
@@ -108,7 +108,7 @@ export default async function CodeBlock({ language, code, filename }: CodeBlockP
 
       <div className="overflow-x-auto">
         <div
-          className="code-block [&_pre]:m-0 [&_pre]:px-5 [&_pre]:py-4 [&_pre_code]:font-mono [&_pre_code]:text-sm [&_pre_code]:leading-7"
+          className="code-block [&_pre]:m-0 [&_pre]:px-6 [&_pre]:py-4 [&_pre_code]:font-mono [&_pre_code]:text-sm [&_pre_code]:leading-7"
           dangerouslySetInnerHTML={{ __html: highlightedHtml }}
         />
       </div>

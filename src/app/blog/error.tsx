@@ -16,14 +16,14 @@ export default function BlogError({
 
   return (
     <main className="w-full py-2 sm:py-6 lg:py-10 font-mono">
-      <section className="mx-auto w-full max-w-3xl rounded-2xl border-2 border-border bg-background px-5 py-7 sm:rounded-3xl sm:px-8 sm:py-10 motion-scale-in">
-        <p className="text-xs uppercase text-foreground/55 motion-fade-up" style={{ letterSpacing: "0.25em" }}>
+      <section className="mx-auto w-full max-w-3xl rounded-2xl border-2 border-border bg-background px-6 py-8 sm:rounded-3xl sm:px-8 sm:py-10 motion-scale-in">
+        <p className="text-xs uppercase text-muted-foreground motion-fade-up" style={{ letterSpacing: "0.25em" }}>
           Blog Error
         </p>
         <h1 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-foreground motion-fade-up motion-delay-1">
           Could not load this blog view.
         </h1>
-        <p className="mt-4 text-sm sm:text-base leading-relaxed text-foreground/70 motion-fade-up motion-delay-2">
+        <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground motion-fade-up motion-delay-2">
           Please try again. If this keeps happening, check the Sanity connection and query data.
         </p>
         <div className="mt-6 motion-fade-up motion-delay-3">

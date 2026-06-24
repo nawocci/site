@@ -42,9 +42,15 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-foreground font-sans min-h-screen flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1000] focus:rounded-xl focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:outline-2 focus:outline-ring focus:outline-offset-2"
+        >
+          Skip to main content
+        </a>
         <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 sm:px-6 lg:px-8">
           <Navbar />
-          <main className="flex flex-1 flex-col">
+          <main id="main-content" className="flex flex-1 flex-col">
             {children}
           </main>
           <Footer />

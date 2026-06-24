@@ -20,7 +20,7 @@ export default function BlogPostLoading() {
           </div>
 
           <p
-            className="text-center text-xs uppercase text-foreground/55 motion-fade-up motion-delay-2"
+            className="text-center text-xs uppercase text-muted-foreground motion-fade-up motion-delay-2"
             style={{ letterSpacing: "0.25em" }}
           >
             Title

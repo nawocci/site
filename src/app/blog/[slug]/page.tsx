@@ -61,7 +61,7 @@ function ArticleMetaHeader({
         ) : null}
       </div>
       <p
-        className="text-center text-xs uppercase text-foreground/55 motion-fade-up motion-delay-2"
+        className="text-center text-xs uppercase text-muted-foreground motion-fade-up motion-delay-2"
         style={UI_BLOG_CLASSNAMES.titleLabel}
       >
         Title
@@ -70,7 +70,7 @@ function ArticleMetaHeader({
         {title}
       </h1>
       {excerpt ? (
-        <p className="mx-auto max-w-3xl text-center text-base leading-7 text-foreground/70 motion-fade-up motion-delay-3 sm:text-lg sm:leading-8">
+        <p className="mx-auto max-w-3xl text-center text-base leading-7 text-muted-foreground motion-fade-up motion-delay-3 sm:text-lg sm:leading-8">
           {excerpt}
         </p>
       ) : null}
