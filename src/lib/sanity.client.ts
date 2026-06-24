@@ -5,17 +5,16 @@ const projectId =
 const dataset =
   process.env.SANITY_DATASET ?? process.env.NEXT_PUBLIC_SANITY_DATASET;
 
-if (!projectId || !dataset) {
-  throw new Error(
-    "Missing Sanity env vars. Set SANITY_PROJECT_ID (or NEXT_PUBLIC_SANITY_PROJECT_ID) and SANITY_DATASET (or NEXT_PUBLIC_SANITY_DATASET)."
-  );
-}
+export const hasSanityConfig = !!(projectId && dataset);
 
-export const sanityClient = createClient({
-  projectId,
-  dataset,
-  apiVersion: "2026-04-16",
-  useCdn: process.env.NODE_ENV === "production",
-});
+export const sanityClient = hasSanityConfig
+  ? createClient({
+      projectId: projectId!,
+      dataset: dataset!,
+      apiVersion: "2026-04-16",
+      useCdn: process.env.NODE_ENV === "production",
+    })
+  : null;
 
-export const getFreshClient = () => sanityClient.withConfig({ useCdn: false });
+export const getFreshClient = () =>
+  sanityClient ? sanityClient.withConfig({ useCdn: false }) : null;

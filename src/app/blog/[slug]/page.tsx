@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { PortableText } from "next-sanity";
 import { FiArrowLeft } from "react-icons/fi";
 
-import { sanityClient, getFreshClient } from "@/lib/sanity.client";
+import { hasSanityConfig, getFreshClient } from "@/lib/sanity.client";
 import { postBySlugQuery, type BlogPost } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
 import { formatDate } from "@/lib/sanity.utils";
@@ -97,7 +97,17 @@ async function BlogPostContent({
 }) {
   const { slug } = await params;
 
-  const post = await getFreshClient().fetch<BlogPost | null>(postBySlugQuery, {
+  if (!hasSanityConfig) {
+    notFound();
+  }
+
+  const client = getFreshClient();
+
+  if (!client) {
+    notFound();
+  }
+
+  const post = await client.fetch<BlogPost | null>(postBySlugQuery, {
     slug,
   });
 
@@ -105,9 +115,10 @@ async function BlogPostContent({
     notFound();
   }
 
-  const heroImageUrl = post.image
-    ? urlForImage(post.image, { width: 1600, height: 900, fit: "crop", quality: 76 }).url()
+  const imageBuilder = post.image
+    ? urlForImage(post.image, { width: 1600, height: 900, fit: "crop", quality: 76 })
     : null;
+  const heroImageUrl = imageBuilder?.url() ?? null;
   const lqip = post.image?.asset?.metadata?.lqip || undefined;
   const publishedDate = post.publishedAt || post._createdAt;
   const lastModifiedDate = post._updatedAt;

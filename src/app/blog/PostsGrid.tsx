@@ -1,4 +1,4 @@
-import { sanityClient, getFreshClient } from "@/lib/sanity.client";
+import { hasSanityConfig, getFreshClient } from "@/lib/sanity.client";
 import { postsQuery, type BlogPostPreview } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
 import { formatDate } from "@/lib/sanity.utils";
@@ -37,7 +37,16 @@ function EmptyPostsState() {
 }
 
 export async function PostsGrid() {
-  const posts = await getFreshClient().fetch<BlogPostPreview[]>(postsQuery);
+  if (!hasSanityConfig) {
+    return <EmptyPostsState />;
+  }
+
+  const client = getFreshClient();
+  if (!client) {
+    return <EmptyPostsState />;
+  }
+
+  const posts = await client.fetch<BlogPostPreview[]>(postsQuery);
 
   if (posts.length === 0) {
     return <EmptyPostsState />;
@@ -47,6 +56,9 @@ export async function PostsGrid() {
     <ul className={POSTS_GRID_CLASS}>
       {posts.map((post, index) => {
         const dateTime = post.publishedAt || post._createdAt;
+        const imageUrl = post.image
+          ? urlForImage(post.image, { width: 960, height: 720, fit: "crop", quality: 72 })?.url()
+          : undefined;
 
         return (
           <BlogPostCard
@@ -56,11 +68,7 @@ export async function PostsGrid() {
             dateTime={dateTime}
             displayDate={formatDate(dateTime)}
             excerpt={post.excerpt}
-            imageUrl={
-              post.image
-                ? urlForImage(post.image, { width: 960, height: 720, fit: "crop", quality: 72 }).url()
-                : undefined
-            }
+            imageUrl={imageUrl}
             lqip={post.image?.asset?.metadata?.lqip || undefined}
             index={index}
           />
