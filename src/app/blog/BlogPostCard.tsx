@@ -37,7 +37,7 @@ export default function BlogPostCard({
     <li className={cardClassName} style={{ animationDelay: `${index * 75}ms` }}>
       <Link
         href={`/blog/${slug}`}
-        className="group flex flex-col rounded-xl sm:rounded-2xl border-2 border-border overflow-hidden bg-background transition duration-100 can-hover:hover:-translate-y-0.5 can-hover:hover:border-primary can-hover:hover:shadow-card-hover"
+        className="group flex flex-col rounded-xl sm:rounded-2xl border-2 border-border overflow-hidden bg-background transition duration-100 hover:-translate-y-0.5 hover:border-primary hover:shadow-card-hover"
       >
         <div className="relative h-48 sm:h-48 lg:h-52 overflow-hidden bg-border">
           {imageUrl ? (
@@ -51,7 +51,7 @@ export default function BlogPostCard({
               blurDataURL={lqip}
               onLoad={() => setLoadedSrc(imageUrl)}
               onError={() => setLoadedSrc(imageUrl)}
-              className="object-cover h-full w-full transition-transform duration-200 group-can-hover:hover:scale-110"
+              className="object-cover h-full w-full transition-transform duration-200 group-hover:scale-110"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             />
           ) : (
@@ -72,11 +72,11 @@ export default function BlogPostCard({
           >
             {displayDate}
           </time>
-          <h2 className="font-bold text-lg sm:text-xl lg:text-2xl tracking-tight text-foreground transition-colors duration-200 group-can-hover:hover:text-primary">
+          <h2 className="font-bold text-lg sm:text-xl lg:text-2xl tracking-tight text-foreground transition-colors duration-200 group-hover:text-primary">
             {title}
           </h2>
           {excerpt ? (
-            <p className="text-xs sm:text-sm leading-relaxed text-foreground/75 transition-colors duration-200 group-can-hover:hover:text-foreground line-clamp-2">
+            <p className="text-xs sm:text-sm leading-relaxed text-foreground/75 transition-colors duration-200 group-hover:text-foreground line-clamp-2">
               {excerpt}
             </p>
           ) : null}

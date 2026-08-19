@@ -30,7 +30,7 @@ export default function LinkedHeader({ level, id, children }: LinkedHeaderProps)
       <button
         onClick={handleCopy}
         aria-label="Copy link to section"
-        className="absolute -left-8 top-1/2 -translate-y-1/2 hidden lg:flex items-center justify-center p-1 text-foreground/40 can-hover:hover:text-primary transition-all opacity-0 group-can-hover:hover:opacity-100 focus:opacity-100 cursor-pointer"
+        className="absolute -left-8 top-1/2 -translate-y-1/2 hidden lg:flex items-center justify-center p-1 text-foreground/40 hover:text-primary transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 cursor-pointer"
       >
         {copied ? (
           <FiCheck className="h-4 w-4 text-green-500" />

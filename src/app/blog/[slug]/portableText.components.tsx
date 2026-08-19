@@ -89,7 +89,7 @@ export const portableTextComponents = {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary underline decoration-current underline-offset-[0.18em] transition-colors can-hover:hover:text-primary/80"
+            className="text-primary underline decoration-current underline-offset-[0.18em] transition-colors hover:text-primary/80"
           >
             {children}
           </a>
@@ -98,7 +98,7 @@ export const portableTextComponents = {
       return (
         <Link
           href={href}
-          className="text-primary underline decoration-current underline-offset-[0.18em] transition-colors can-hover:hover:text-primary/80"
+          className="text-primary underline decoration-current underline-offset-[0.18em] transition-colors hover:text-primary/80"
         >
           {children}
         </Link>

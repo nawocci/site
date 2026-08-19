@@ -92,7 +92,7 @@ export default function InlineImageLightbox({
         aria-label="Open image dialog"
         aria-expanded={isMounted}
       >
-        <span className="relative block overflow-hidden rounded-2xl border-2 border-border shadow-md shadow-foreground/10 transition-transform duration-200 group-can-hover:hover:scale-[1.01]">
+        <span className="relative block overflow-hidden rounded-2xl border-2 border-border shadow-md shadow-foreground/10 transition-transform duration-200 group-hover:scale-[1.01]">
           <Image
             src={previewSrc}
             alt={alt}

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { FiCheck, FiCopy } from "react-icons/fi";
 
 const COPY_BUTTON_CLASS =
-  "inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-1 text-xs font-semibold text-foreground transition-colors duration-200 can-hover:hover:border-primary can-hover:hover:text-primary";
+  "inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-1 text-xs font-semibold text-foreground transition-colors duration-200 hover:border-primary hover:text-primary";
 
 export default function CodeBlockCopyButton({ code }: { code: string }) {
   const [isCopied, setIsCopied] = useState(false);

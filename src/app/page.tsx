@@ -40,7 +40,7 @@ export default function Home() {
                   {heroPills.map((pill) => (
                     <span
                       key={pill.label}
-                      className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-2 text-xs font-semibold text-foreground/80 transition-transform duration-200 can-hover:hover:-translate-y-0.5 can-hover:hover:border-primary/60"
+                      className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-2 text-xs font-semibold text-foreground/80 transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/60"
                     >
                       <pill.icon className="h-3.5 w-3.5 text-primary" />
                       {pill.label}
@@ -98,7 +98,7 @@ export default function Home() {
                   {heroPills.map((pill) => (
                     <span
                       key={pill.label}
-                      className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-2 text-xs font-semibold text-foreground/80 transition-transform duration-200 can-hover:hover:-translate-y-0.5 can-hover:hover:border-primary/60"
+                      className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-2 text-xs font-semibold text-foreground/80 transition-transform duration-200 hover:-translate-y-0.5 hover:border-primary/60"
                     >
                       <pill.icon className="h-3.5 w-3.5 text-primary" />
                       {pill.label}
@@ -116,7 +116,7 @@ export default function Home() {
                   href="/cv-naufal-altaf-2026-06-28.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-sm font-semibold text-background shadow-md transition duration-100 can-hover:hover:bg-primary can-hover:hover:shadow-lg active:scale-[0.98]"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-sm font-semibold text-background shadow-md transition duration-100 hover:bg-primary hover:shadow-lg active:scale-[0.98]"
                 >
                   Download CV
                   <FiDownload className="h-4 w-4" />
@@ -125,7 +125,7 @@ export default function Home() {
                   href="https://github.com/nawocci?tab=repositories"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-border px-4 py-3 text-sm font-semibold text-foreground transition duration-100 can-hover:hover:border-primary can-hover:hover:text-primary active:scale-[0.98]"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-border px-4 py-3 text-sm font-semibold text-foreground transition duration-100 hover:border-primary hover:text-primary active:scale-[0.98]"
                 >
                   View Projects
                   <FiGithub className="h-4 w-4" />

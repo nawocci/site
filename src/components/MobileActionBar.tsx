@@ -6,7 +6,7 @@ import { FiBookOpen, FiHome, FiMail } from "react-icons/fi";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const mobileActionIconClasses =
-  "inline-flex h-11 w-11 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 can-hover:hover:border-primary can-hover:hover:text-primary";
+  "inline-flex h-11 w-11 items-center justify-center rounded-full border-2 text-foreground transition-colors duration-200 hover:border-primary hover:text-primary";
 
 type MobileActionBarProps = {
   isHomeRoute: boolean;

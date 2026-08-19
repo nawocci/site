@@ -19,7 +19,7 @@ export default function Footer() {
             href={link.href}
             target={link.isExternal ? "_blank" : undefined}
             rel={link.isExternal ? "noopener noreferrer" : undefined}
-            className="transition-colors can-hover:hover:text-primary can-hover:hover:underline"
+            className="transition-colors hover:text-primary hover:underline"
           >
             {link.label}
           </a>
